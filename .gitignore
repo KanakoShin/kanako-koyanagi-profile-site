@@ -1,0 +1,10 @@
+# macOS系
+.DS_Store
+
+# エディタ系
+.vscode/
+.idea/
+
+# その他一時ファイル
+*.log
+*.tmp
