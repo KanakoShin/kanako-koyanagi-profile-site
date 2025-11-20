@@ -1,0 +1,298 @@
+:root {
+  --gutter: clamp(16px, 4vw, 32px);
+}
+
+html {
+  font-size: 100%;
+} /* 16px相当。62.5%は非推奨 */
+
+body {
+  font-size: 1rem;
+  line-height: 1.6;
+  font-family: "Arial", "メイリオ", sans-serif;
+  color: black;
+  margin: 0;
+  padding-inline: var(--gutter);
+}
+
+h1 {
+  font-size: clamp(1.5rem, 2vw + 1rem, 2.25rem);
+}
+
+h2 {
+  font-size: clamp(1.25rem, 1.2vw + 0.9rem, 1.75rem);
+}
+
+li {
+  list-style: none;
+}
+
+.btn {
+  font-size: 1rem;
+  padding: 0.5em 1em;
+} /* 文字が大きくなれば余白も比例 */
+
+/* PC用のCSSはメディアクエリの外に記述する */
+.container {
+  width: 100%;
+}
+
+/* スキップリンク（任意） */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.skip-link:focus {
+  left: 0;
+  top: 0;
+  padding: 0.5rem;
+  background: #fff;
+  border: 2px solid;
+}
+
+.site-header--logo {
+  /* display: inline-block; */
+  padding: 8px 32px;
+  background-color: black;
+}
+
+.site-header--logo-bland {
+  text-decoration: none;
+  color: white;
+  font-size: 2rem;
+}
+
+.hero {
+  position: relative;
+}
+.hero-copy {
+  display: inline-block;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}
+.hero-mainvisual {
+  display: block;
+  width: 100vw;
+  height: 300px;
+  object-fit: cover;
+}
+
+.menu {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  padding: 16px;
+}
+.menu-list + .menu-list {
+  border-left: 1px solid grey;
+}
+.menu-link {
+  text-decoration: none;
+  color: black;
+  padding: 0px 16px;
+}
+
+.full-bleed {
+  inline-size: 100vw;
+  margin-inline: calc(50% - 50vw);
+}
+.section {
+  /* margin: 80px 0; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+main > section.section {
+  margin-block: 40px;
+} /* 基本 */
+main > section.section:nth-of-type(2n + 3) {
+  margin-block: 40px;
+} /* 3,5,7… */
+main > section.section:first-of-type {
+  margin: 40px 0;
+}
+
+/* いまの指定は残してOK（paddingなどはそのまま活かす） */
+.section-backcolor {
+  position: relative; /* ← これを追加 */
+  background: transparent; /* 背景色は疑似要素に移す（任意） */
+  padding: 40px 0 40px;
+}
+
+/* 背景だけを画面端まで広げる */
+.section-backcolor::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* セクション全体を覆う */
+  background: #f5f0e6; /* あなたの背景色 */
+  /* ここがミソ：背景を左右に100vmaxぶん“はみ出させる” */
+  box-shadow: 0 0 0 100vmax #f5f0e6;
+  clip-path: inset(0 -100vmax); /* はみ出し部分を描画対象に */
+  z-index: -1; /* 背景として後ろへ */
+}
+
+.section-title {
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.section-about--flex {
+  display: flex;
+  gap: 1em;
+}
+
+.section-about--name {
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  padding-bottom: 16px;
+}
+
+.section-about--description {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-about--img {
+  clip-path: circle(50%);
+}
+
+/* 1) ULのデフォ余白をリセット（ズレ防止） */
+.section-works__list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+/* (任意) 画像とテキストの間の余白を安定させる */
+.section-works__card {
+  display: grid;
+  gap: 0.5rem;
+}
+
+/* 3) 画像をカード幅にフィットさせる */
+.section-works__thumb {
+  display: block; /* 画像下の隙間を消す */
+  width: 100%; /* 親（カード）幅いっぱい */
+  height: auto; /* 比率維持 */
+  max-width: 100%;
+}
+
+.section-works__title {
+  --lh: 1.4;
+  line-height: var(--lh);
+  /* フォントサイズに追従して2行分の高さを確保 */
+  min-block-size: calc(2 * 1em * var(--lh));
+}
+
+/* .section-ability--img {
+  clip-path: circle(35%);
+} */
+
+/* できることセクション↓↓ */
+.section-skills__list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.section-skills__card {
+  display: grid;
+  gap: 0.5rem;
+}
+
+/* 3) 画像をカード幅にフィットさせる */
+.section-skills__thumb {
+  display: block; /* 画像下の隙間を消す */
+  width: 100%; /* 親（カード）幅いっぱい */
+  height: auto; /* 比率維持 */
+  max-width: 100%;
+}
+
+.section-skills__card img {
+  clip-path: circle(35%);
+  display: block; /* 画像下の隙間を消す */
+  width: 100%; /* 親（カード）幅いっぱい */
+  height: auto; /* 比率維持 */
+  max-width: 100%;
+}
+
+.section-skills__card h3 {
+  text-align: center;
+  --lh: 1.4;
+  line-height: var(--lh);
+  /* フォントサイズに追従して2行分の高さを確保 */
+  min-block-size: calc(2 * 1em * var(--lh));
+}
+
+/* 思考セクション↓↓ */
+.section__thinking {
+  width: 100%;
+  display: grid;
+  gap: 2rem;
+}
+
+.section__thinking--list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+/* (任意) 画像とテキストの間の余白を安定させる */
+.section-thinking__card {
+  display: grid;
+  gap: 0.5rem;
+}
+
+/* 3) 画像をカード幅にフィットさせる */
+.section-thinking__thumb {
+  display: block; /* 画像下の隙間を消す */
+  width: 100%; /* 親（カード）幅いっぱい */
+  height: auto; /* 比率維持 */
+  max-width: 100%;
+}
+
+.section__thinking--h3 {
+  padding: 0.25em 0.5em; /*上下 左右の余白*/
+  background: transparent; /*背景透明に*/
+  border-left: solid 5px #7db4e6; /*左線*/
+}
+
+.section__thinking--card {
+  display: grid;
+  gap: 1rem;
+}
+
+.section__thinking--case-list {
+  display: grid;
+  gap: 16px;
+}
+
+/* .section__thinking-images {
+  max-width: 100%;
+  height: auto;
+} */
+
+.section__thinking-images-item {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (min-width: 60em) {
+  /* 約960px(16px基準)。既定サイズが20pxなら1200px相当にスケール */
+}
