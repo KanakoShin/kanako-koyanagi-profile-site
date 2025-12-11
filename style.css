@@ -9,6 +9,7 @@
   --space-m: 1rem; /* 16px */
   --space-l: 1.5rem; /* 24px */
   --space-xl: 2rem; /* 32px */
+  --space-xxl: 2.5rem; /* 40px */
   --space-2xl: 3rem; /* 48px */
   --space-3xl: 4rem; /* 64px */
 
@@ -22,46 +23,68 @@
   --space-neg-xs: calc(var(--space-xs) * -1);
 
   /* ---- Font size scale (rem) ---- */
---fs-2xs: 0.75rem; /* 12px */
---fs-sm: 0.875rem; /* 14px */
---fs-md: 1rem; /* 16px（本文ベース） */
---fs-lg: 1.125rem; /* 18px */
---fs-xl: 1.25rem; /* 20px */
---fs-2xl: 1.5rem; /* 24px */
---fs-3xl: 1.75rem; /* 28px */
---fs-4xl: 2rem; /* 32px */
---fs-5xl: 2.25rem; /* 36px */
---fs-6xl: 3rem; /* 48px */
+  --fs-2xs: 0.75rem; /* 12px */
+  --fs-sm: 0.875rem; /* 14px */
+  --fs-md: 1rem; /* 16px（本文ベース） */
+  --fs-lg: 1.125rem; /* 18px */
+  --fs-xl: 1.25rem; /* 20px */
+  --fs-2xl: 1.5rem; /* 24px */
+  --fs-3xl: 1.75rem; /* 28px */
+  --fs-4xl: 2rem; /* 32px */
+  --fs-5xl: 2.25rem; /* 36px */
+  --fs-6xl: 3rem; /* 48px */
 
-/* 本文は固定（日本語は16px以上推奨） */
---fs-body: var(--fs-md);
+  /* 本文は固定（日本語は16px以上推奨） */
+  --fs-body: var(--fs-md);
 
-/* 見出しはclampで流体化（min / preferred / max） */
---fs-h1: clamp(var(--fs-4xl), calc(var(--fs-3xl) + 2.5vw), var(--fs-5xl));
---fs-h2: clamp(var(--fs-3xl), calc(var(--fs-2xl) + 2vw), var(--fs-4xl));
---fs-h3: clamp(var(--fs-2xl), calc(var(--fs-xl) + 1.2vw), var(--fs-3xl));
---fs-h4: clamp(var(--fs-xl), calc(var(--fs-lg) + 0.8vw), var(--fs-2xl));
+  /* 見出しはclampで流体化（min / preferred / max） */
+  --fs-h1: clamp(var(--fs-3xl), calc(var(--fs-2xl) + 2.5vw), var(--fs-4xl));
+  --fs-h2: clamp(var(--fs-xl), calc(var(--fs-lg) + 2vw), var(--fs-2xl));
+  --fs-h3: clamp(var(--fs-lg), calc(var(--fs-md) + 1.2vw), var(--fs-xl));
+  --fs-h4: clamp(var(--fs-md), calc(var(--fs-sm) + 0.8vw), var(--fs-lg));
 
-/* 行間は単位なしで固定 */
---lh-heading: 1.25;
---lh-body: 1.6;
+  /* 行間は単位なしで固定 */
+  --lh-heading: 1.25;
+  --lh-body: 1.6;
 
-h1,h2,h3,h4 { line-height: var(--lh-heading); }
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: var(--lh-heading);
+  }
 
-h1{ font-size: var(--fs-h1); }
+  h1 {
+    font-size: var(--fs-h1);
+  }
 
-h2{ font-size: var(--fs-h2); }
+  h2 {
+    font-size: var(--fs-h2);
+  }
 
-h3{ font-size: var(--fs-h3); }
+  h3 {
+    font-size: var(--fs-h3);
+  }
 
-h4{ font-size: var(--fs-h4); }
+  h4 {
+    font-size: var(--fs-h4);
+  }
 
-li {
-  list-style: none;
+  /* families */
+  --ff-sans: system-ui, -apple-system, "Segoe UI", "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", "Noto Sans JP", "Yu Gothic UI", Meiryo, Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --ff-serif: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN",
+    "Times New Roman", serif;
+  --ff-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  --ff-emoji: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
+
+  /* semantic aliases（差し替えはここだけ） */
+  --ff-body: var(--ff-sans);
+  --ff-heading: var(--ff-sans);
+  --ff-code: var(--ff-mono);
 }
-
-}
-
 
 @media (min-width: 768px) {
   :root {
@@ -74,24 +97,26 @@ li {
 
 html {
   font-size: 100%;
+  font-family: var(--ff-body), var(--ff-emoji);
 }
 
 body {
-  font-size: 1rem;
-  line-height: 1.6;
-  font-family: "Arial", "メイリオ", sans-serif;
+  font-size: var(--space-m);
+  line-height: var(--lh-body);
+  font-family: var(--ff-body), var(--ff-emoji);
   color: black;
   margin: 0;
   padding-inline: var(--gutter);
 }
 
-body { font-size: var(--fs-body); line-height: var(--lh-body); }
+body {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+}
 
-
-.btn {
-  font-size: 1rem;
-  padding: 0.5em 1em;
-} /* 文字が大きくなれば余白も比例 */
+li {
+  list-style: none;
+}
 
 /* PC用のCSSはメディアクエリの外に記述する */
 .container {
@@ -106,13 +131,12 @@ body { font-size: var(--fs-body); line-height: var(--lh-body); }
 .skip-link:focus {
   left: 0;
   top: 0;
-  padding: 0.5rem;
+  padding: var(--space-xs);
   background: #fff;
   border: 2px solid;
 }
 
 .site-header--logo {
-  /* display: inline-block; */
   padding: var(--space-xs) var(--space-xl);
   background-color: black;
 }
@@ -120,7 +144,7 @@ body { font-size: var(--fs-body); line-height: var(--lh-body); }
 .site-header--logo-bland {
   text-decoration: none;
   color: white;
-  font-size: 2rem;
+  font-size: var(--fs-4xl);
 }
 
 .hero {
@@ -132,18 +156,22 @@ body { font-size: var(--fs-body); line-height: var(--lh-body); }
   top: 10%;
   left: 10%;
 }
+.hero-copy__letter {
+  font-size: var(--fs-4xl);
+}
+
 .hero-mainvisual {
   display: block;
   width: 100vw;
-  height: 300px;
+  height: 8rem;
   object-fit: cover;
 }
 
 .menu {
   display: flex;
-  gap: 1rem;
+  gap: var(--space-m);
   justify-content: flex-end;
-  padding: 16px;
+  padding: var(--space-m);
 }
 .menu-list + .menu-list {
   border-left: 1px solid grey;
@@ -151,7 +179,7 @@ body { font-size: var(--fs-body); line-height: var(--lh-body); }
 .menu-link {
   text-decoration: none;
   color: black;
-  padding: 0px 16px;
+  padding: 0px var(--space-m);
 }
 
 .full-bleed {
@@ -167,20 +195,20 @@ body { font-size: var(--fs-body); line-height: var(--lh-body); }
 }
 
 main > section.section {
-  margin-block: 40px;
+  margin-block: var(--space-xxl);
 } /* 基本 */
 main > section.section:nth-of-type(2n + 3) {
-  margin-block: 40px;
+  margin-block: var(--space-xxl);
 } /* 3,5,7… */
 main > section.section:first-of-type {
-  margin: 40px 0;
+  margin: var(--space-xxl) 0;
 }
 
 /* いまの指定は残してOK（paddingなどはそのまま活かす） */
 .section-backcolor {
   position: relative; /* ← これを追加 */
   background: transparent; /* 背景色は疑似要素に移す（任意） */
-  padding: 40px 0 40px;
+  padding: var(--space-xxl) 0 var(--space-xxl);
 }
 
 /* 背景だけを画面端まで広げる */
@@ -188,7 +216,7 @@ main > section.section:first-of-type {
   content: "";
   position: absolute;
   inset: 0; /* セクション全体を覆う */
-  background: #f5f0e6; /* あなたの背景色 */
+  background: #f5f0e6;
   /* ここがミソ：背景を左右に100vmaxぶん“はみ出させる” */
   box-shadow: 0 0 0 100vmax #f5f0e6;
   clip-path: inset(0 -100vmax); /* はみ出し部分を描画対象に */
@@ -197,27 +225,35 @@ main > section.section:first-of-type {
 
 .section-title {
   text-align: center;
-  padding-bottom: 40px;
+  padding-bottom: var(--space-xxl);
+  font-size: var(--fs-3xl);
 }
 
 .section-about--flex {
   display: flex;
-  gap: 1em;
+  gap: var(--space-m);
 }
 
-.section-about--name {
+.section-about__description--name-jp {
+  font-size: var(--fs-2xl);
+}
+.section-about__description--name-en {
   text-transform: uppercase;
-  font-size: 1.25rem;
-  padding-bottom: 16px;
+  font-size: var(--fs-md);
+  padding-bottom: var(--space-m);
 }
 
-.section-about--description {
+.section-about__description {
   display: flex;
   flex-direction: column;
 }
 
 .section-about--img {
   clip-path: circle(50%);
+}
+
+.section-about__description--detail {
+  line-height: 1.8;
 }
 
 /* 1) ULのデフォ余白をリセット（ズレ防止） */
@@ -227,13 +263,13 @@ main > section.section:first-of-type {
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 2rem;
+  gap: var(--space-xl);
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 /* (任意) 画像とテキストの間の余白を安定させる */
 .section-works__card {
   display: grid;
-  gap: 0.5rem;
+  gap: var(--space-xs);
 }
 
 /* 3) 画像をカード幅にフィットさせる */
@@ -262,13 +298,13 @@ main > section.section:first-of-type {
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 2rem;
+  gap: var(--space-xl);
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 .section-skills__card {
   display: grid;
-  gap: 0.5rem;
+  gap: var(--space-xs);
 }
 
 /* 3) 画像をカード幅にフィットさせる */
@@ -299,7 +335,7 @@ main > section.section:first-of-type {
 .section__thinking {
   width: 100%;
   display: grid;
-  gap: 2rem;
+  gap: var(--space-xl);
 }
 
 .section__thinking--list {
@@ -309,14 +345,14 @@ main > section.section:first-of-type {
   list-style: none;
 
   display: grid;
-  gap: 2rem;
+  gap: var(--space-xl);
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
 }
 
 /* (任意) 画像とテキストの間の余白を安定させる */
 .section-thinking__card {
   display: grid;
-  gap: 0.5rem;
+  gap: var(--space-xs);
 }
 
 /* 3) 画像をカード幅にフィットさせる */
@@ -335,12 +371,12 @@ main > section.section:first-of-type {
 
 .section__thinking--card {
   display: grid;
-  gap: 1rem;
+  gap: var(--space-m);
 }
 
 .section__thinking--case-list {
   display: grid;
-  gap: 16px;
+  gap: var(--space-m);
 }
 
 /* .section__thinking-images {
