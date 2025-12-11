@@ -151,8 +151,8 @@
               </div>
               <h3 class="">マークアップ・スタイリング</h3>
               <p>
-                生htmlからReactなど<br />フレームワークのマークアップを行います。<br />
-                CSSスタイリングにおいても同じく、<br />生CSSからフレームワークまで行います。
+                生htmlからReactなどフレームワークのマークアップを行います。<br />
+                CSSスタイリングにおいても同じく、生CSSからフレームワークまで行います。
               </p>
             </div>
           </li>
@@ -247,148 +247,157 @@
       <section class="section section-backcolor">
         <h2 class="section-title full-bleed">デザイン設計思考</h2>
         <div class="section__thinking">
-          <h3 class="section__thinking--h3">思考の概要</h3>
-          <ul class="section__thinking--list">
-            <li>
-              <div class="section__thinking--card">
-                <h4>デザインは構造を可視化するもの</h4>
-                <div>
-                  <p>
-                    Figmaで作るときは実際のHTML構造を想定してAuto Layoutを設定。
-                  </p>
-                  <p>余白・ネスト・命名など、後の実装を見越して整理。</p>
+          <div class="section__thinking--content">
+            <h3 class="section__thinking--h3">思考の概要</h3>
+            <ul class="section__thinking--list">
+              <li>
+                <div class="section__thinking--card">
+                  <h4>デザインは構造を可視化するもの</h4>
+                  <div>
+                    <p>
+                      Figmaで作るときは実際のHTML構造を想定してAuto
+                      Layoutを設定。
+                    </p>
+                    <p>余白・ネスト・命名など、後の実装を見越して整理。</p>
+                  </div>
                 </div>
-              </div>
-            </li>
-            <li>
-              <div class="section__thinking--card">
-                <h4>再利用・修正・メンテナンスを前提に</h4>
-                <p>ReactやCSS Modulesで扱いやすい粒度でコンポーネント化。</p>
-                <p>Variant名・クラス名・変数名は統一しておく。</p>
-              </div>
-            </li>
-            <li>
-              <div class="section__thinking--card">
-                <h4>実装を前提にしたデザインを行う</h4>
-                <p>
-                  一貫性を保つデザインシステム整備を通じて、<br />
-                  「誰が作っても同じ結果になる」仕組みを意識しています。
+              </li>
+              <li>
+                <div class="section__thinking--card">
+                  <h4>再利用・修正・メンテナンスを前提に</h4>
+                  <p>ReactやCSS Modulesで扱いやすい粒度でコンポーネント化。</p>
+                  <p>Variant名・クラス名・変数名は統一しておく。</p>
+                </div>
+              </li>
+              <li>
+                <div class="section__thinking--card">
+                  <h4>実装を前提にしたデザインを行う</h4>
+                  <p>
+                    一貫性を保つデザインシステム整備を通じて、<br />
+                    「誰が作っても同じ結果になる」仕組みを意識しています。
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div class="section__thinking--card">
+                  <h4>環境整備がチームの効率化の鍵である</h4>
+                  <p>
+                    小さな整備の積み重ねで、納期と品質を両立することを目標にしています。
+                  </p>
+                </div>
+              </li>
+            </ul>
+            <div class="section__thinking--case-wrapper">
+              <h3 class="section__thinking--h3">
+                figmaでのデザインとコード対応
+              </h3>
+              <div class="section__thinking--case-content">
+                <div class="section__thinking--case-title">
+                  <h4>Case1 Button</h4>
+                  <p>命名の一貫性</p>
+                </div>
+                <p class="section__thinking--case-letter">
+                  初歩的なことではありますが、状態による変化の管理やコンポート名の命名に一貫性を持たせることを気をつけています。
                 </p>
+                <ul class="section__thinking--case-list">
+                  <li class="section__thinking--case-list-inner">
+                    <h5>Figmaでのデザイン</h5>
+                    <div class="section__thinking-images">
+                      <img
+                        src="./img/button_figma_variant_design.png"
+                        alt="Figma画面の左にあるサイドパネルとデザイン作業パネルで作成したボタンコンポーネントの状態一覧をスクリーンショットした画像。上からVariants名 Button、inactive-disabled、inactive-hover、active-disabled、active-hover、active-focused、active、inactive-focused、inactiveのレイヤー名が並んでいる。縦に Normal と Active、横に Default・Hover・Focus・Disabled が並び、青い「押さないでね」ボタンと赤い「押しちゃったんですか？」ボタンが、それぞれ通常・ホバー・フォーカス・無効の色や枠線の違いで表示されている。"
+                        width="400"
+                        height="300"
+                        class="section__thinking-images-item"
+                      />
+                    </div>
+                  </li>
+                  <li class="section__thinking--case-list-inner">
+                    <h5>html/CSS/JS例</h5>
+                    <p
+                      class="codepen"
+                      data-height="300"
+                      data-default-tab="html,result"
+                      data-slug-hash="EaPJOvR"
+                      data-pen-title="Untitled"
+                      data-user="kanakoshin"
+                      style="
+                        height: 300px;
+                        box-sizing: border-box;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border: 2px solid;
+                        margin: 1em 0;
+                        padding: 1em;
+                      "
+                    >
+                      <span
+                        >See the Pen
+                        <a href="https://codepen.io/kanakoshin/pen/EaPJOvR">
+                          Untitled</a
+                        >
+                        by KanakoShin (<a href="https://codepen.io/kanakoshin"
+                          >@kanakoshin</a
+                        >) on <a href="https://codepen.io">CodePen</a>.</span
+                      >
+                    </p>
+                    <script
+                      defer
+                      src="https://public.codepenassets.com/embed/index.js"
+                    ></script>
+                  </li>
+                  <li>
+                    <h5>React例</h5>
+                    <p>
+                      注：こちらのコードはあくまでデザインや、その命名をもとにAIで生成したReactのコードになります。本人はバリバリReact書けます！とかではないです。
+                    </p>
+                    <p
+                      class="codepen"
+                      data-height="300"
+                      data-default-tab="html,result"
+                      data-slug-hash="PwZvJNe"
+                      data-pen-title="Button-React"
+                      data-user="kanakoshin"
+                      style="
+                        height: 300px;
+                        box-sizing: border-box;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border: 2px solid;
+                        margin: 1em 0;
+                        padding: 1em;
+                      "
+                    >
+                      <span
+                        >See the Pen
+                        <a href="https://codepen.io/kanakoshin/pen/PwZvJNe">
+                          Button-React</a
+                        >
+                        by Kanako Koyanagi (<a
+                          href="https://codepen.io/kanakoshin"
+                          >@kanakoshin</a
+                        >) on <a href="https://codepen.io">CodePen</a>.</span
+                      >
+                    </p>
+                    <script
+                      defer
+                      src="https://public.codepenassets.com/embed/index.js"
+                    ></script>
+                  </li>
+                </ul>
               </div>
-            </li>
-            <li>
-              <div class="section__thinking--card">
-                <h4>環境整備がチームの効率化の鍵である</h4>
-                <p>
-                  小さな整備の積み重ねで、納期と品質を両立することを目標にしています。
-                </p>
+            </div>
+            <div class="section__thinking--case-content">
+              <div class="section__thinking--case-title">
+                <h4>Case2 Card</h4>
+                <p>構造の整合性</p>
               </div>
-            </li>
-          </ul>
-          <div>
-            <h3 class="section__thinking--h3">figmaでのデザインとコード対応</h3>
-            <div>
-              <h4>Case1 Button</h4>
-              <p>命名の一貫性</p>
               <p>
                 初歩的なことではありますが、状態による変化の管理やコンポート名の命名に一貫性を持たせることを気をつけています。
               </p>
-              <ul class="section__thinking--case-list">
-                <li>
-                  <h5>Figmaでのデザイン</h5>
-                  <div class="section__thinking-images">
-                    <img
-                      src="./img/button_figma_variant_design.png"
-                      alt="Figma画面の左にあるサイドパネルとデザイン作業パネルで作成したボタンコンポーネントの状態一覧をスクリーンショットした画像。上からVariants名 Button、inactive-disabled、inactive-hover、active-disabled、active-hover、active-focused、active、inactive-focused、inactiveのレイヤー名が並んでいる。縦に Normal と Active、横に Default・Hover・Focus・Disabled が並び、青い「押さないでね」ボタンと赤い「押しちゃったんですか？」ボタンが、それぞれ通常・ホバー・フォーカス・無効の色や枠線の違いで表示されている。"
-                      width="400"
-                      height="300"
-                      class="section__thinking-images-item"
-                    />
-                  </div>
-                </li>
-                <li>
-                  <h5>html/CSS/JS例</h5>
-                  <p
-                    class="codepen"
-                    data-height="300"
-                    data-default-tab="html,result"
-                    data-slug-hash="EaPJOvR"
-                    data-pen-title="Untitled"
-                    data-user="kanakoshin"
-                    style="
-                      height: 300px;
-                      box-sizing: border-box;
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      border: 2px solid;
-                      margin: 1em 0;
-                      padding: 1em;
-                    "
-                  >
-                    <span
-                      >See the Pen
-                      <a href="https://codepen.io/kanakoshin/pen/EaPJOvR">
-                        Untitled</a
-                      >
-                      by KanakoShin (<a href="https://codepen.io/kanakoshin"
-                        >@kanakoshin</a
-                      >) on <a href="https://codepen.io">CodePen</a>.</span
-                    >
-                  </p>
-                  <script
-                    defer
-                    src="https://public.codepenassets.com/embed/index.js"
-                  ></script>
-                </li>
-                <li>
-                  <h5>React例</h5>
-                  <p>
-                    注：こちらのコードはあくまでデザインや、その命名をもとにAIで生成したReactのコードになります。本人はバリバリReact書けます！とかではないです。
-                  </p>
-                  <p
-                    class="codepen"
-                    data-height="300"
-                    data-default-tab="html,result"
-                    data-slug-hash="PwZvJNe"
-                    data-pen-title="Button-React"
-                    data-user="kanakoshin"
-                    style="
-                      height: 300px;
-                      box-sizing: border-box;
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      border: 2px solid;
-                      margin: 1em 0;
-                      padding: 1em;
-                    "
-                  >
-                    <span
-                      >See the Pen
-                      <a href="https://codepen.io/kanakoshin/pen/PwZvJNe">
-                        Button-React</a
-                      >
-                      by Kanako Koyanagi (<a
-                        href="https://codepen.io/kanakoshin"
-                        >@kanakoshin</a
-                      >) on <a href="https://codepen.io">CodePen</a>.</span
-                    >
-                  </p>
-                  <script
-                    defer
-                    src="https://public.codepenassets.com/embed/index.js"
-                  ></script>
-                </li>
-              </ul>
             </div>
-          </div>
-          <div>
-            <h4>Case2 Card</h4>
-            <p>構造の整合性</p>
-            <p>
-              初歩的なことではありますが、状態による変化の管理やコンポート名の命名に一貫性を持たせることを気をつけています。
-            </p>
           </div>
         </div>
       </section>

@@ -1,6 +1,9 @@
 :root {
   --gutter: clamp(16px, 4vw, 32px);
 
+  /* ---- color ---- */
+  --main-color: #70b7ff;
+
   /* ---- Scale (4px grid) ---- */
   --space-3xs: 0.125rem; /*  2px */
   --space-2xs: 0.25rem; /*  4px */
@@ -42,6 +45,7 @@
   --fs-h2: clamp(var(--fs-xl), calc(var(--fs-lg) + 2vw), var(--fs-2xl));
   --fs-h3: clamp(var(--fs-lg), calc(var(--fs-md) + 1.2vw), var(--fs-xl));
   --fs-h4: clamp(var(--fs-md), calc(var(--fs-sm) + 0.8vw), var(--fs-lg));
+  --fs-h5: clamp(var(--fs-sm), calc(var(--fs-2xs) + 0.8vw), var(--fs-md));
 
   /* 行間は単位なしで固定 */
   --lh-heading: 1.25;
@@ -68,6 +72,10 @@
 
   h4 {
     font-size: var(--fs-h4);
+  }
+
+  h5 {
+    font-size: var(--fs-h5);
   }
 
   /* families */
@@ -332,10 +340,10 @@ main > section.section:first-of-type {
 }
 
 /* 思考セクション↓↓ */
-.section__thinking {
+.section__thinking--content {
   width: 100%;
   display: grid;
-  gap: var(--space-xl);
+  gap: var(--space-3xl);
 }
 
 .section__thinking--list {
@@ -366,7 +374,7 @@ main > section.section:first-of-type {
 .section__thinking--h3 {
   padding: 0.25em 0.5em; /*上下 左右の余白*/
   background: transparent; /*背景透明に*/
-  border-left: solid 5px #7db4e6; /*左線*/
+  border-left: solid 5px var(--main-color); /*左線*/
 }
 
 .section__thinking--card {
@@ -374,15 +382,35 @@ main > section.section:first-of-type {
   gap: var(--space-m);
 }
 
-.section__thinking--case-list {
+.section__thinking--case-wrapper {
+  display: grid;
+  gap: var(--space-l);
+}
+
+.section__thinking--case-content {
   display: grid;
   gap: var(--space-m);
 }
 
-/* .section__thinking-images {
-  max-width: 100%;
-  height: auto;
-} */
+.section__thinking--case-title {
+  display: flex;
+  gap: var(--space-m);
+  border-bottom: 3px dotted var(--main-color);
+}
+
+.section__thinking--case-list {
+  display: grid;
+  gap: var(--space-2xl);
+}
+
+.section__thinking--case-list-inner {
+  display: grid;
+  gap: var(--space-s);
+}
+
+.section__thinking--case-letter {
+  padding-bottom: var(--space-xs);
+}
 
 .section__thinking-images-item {
   width: 100%;
