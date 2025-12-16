@@ -412,10 +412,15 @@ main > section.section:first-of-type {
   padding-bottom: var(--space-xs);
 }
 
-.section__thinking-images-item {
+.section__thinking--images {
   width: 100%;
   height: auto;
   display: block;
+}
+
+.section__thinking--images-figcaption {
+  padding-top: var(--space-s);
+  font-size: var(--fs-sm);
 }
 
 @media (min-width: 60em) {
