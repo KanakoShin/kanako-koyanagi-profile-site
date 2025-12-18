@@ -74,7 +74,6 @@
           </div>
         </div>
       </section>
-
       <section id="work" class="section section-works section-backcolor">
         <h2 class="section-title full-bleed">やってきたこと</h2>
         <ul class="section-works__list">
@@ -314,7 +313,7 @@
                         <figcaption
                           class="section__thinking--images-figcaption"
                         >
-                          図：ボタンコンポーネントのバリアント表。State
+                          図 : ボタンコンポーネントのバリアント表。State
                           (Default, Hover, Focus, Disabled) と Type (Normal,
                           Active) の組み合わせのデザインを示している
                         </figcaption>
@@ -420,8 +419,8 @@
                         class="section__thinking--images"
                       />
                       <figcaption class="section__thinking--images-figcaption">
-                        図：カードコンポーネントのレイヤー構造一覧（Block: card,
-                        Element: card__thumbnailなど）
+                        図 : カードコンポーネントのレイヤー構造一覧（Block:
+                        card, Element: card__thumbnailなど）
                       </figcaption>
                     </figure>
                   </div>
@@ -467,11 +466,11 @@
             <div class="section__thinking--case-content">
               <div class="section__thinking--case-title">
                 <h4>Case3 フォーム</h4>
-                <p>構造の整合性</p>
+                <p>状態管理と再利用性</p>
               </div>
               <p class="section__thinking--case-letter">
-                HTML構造を考慮して、Figmaではレイヤー構造,レイヤー名（class名との一致）を決め、Auto
-                Layoutを使用します。
+                状態（default / focus / filled / error / disabled）を Variant
+                として設計し、実装する際の状態管理と対応づけます。
               </p>
               <ul class="section__thinking--case-list">
                 <li class="section__thinking--case-list-inner">
@@ -479,20 +478,54 @@
                   <div class="">
                     <figure>
                       <img
-                        src="./img/button_figma_variant_design.png"
-                        alt="Figma画面の左にあるサイドパネルとデザイン作業パネル。サイドパネルのレイヤー一覧と、作成したカードコンポーネントの状態一覧をスクリーンショットした画像。上からVariants名 Button、inactive-disabled、inactive-hover、active-disabled、active-hover、active-focused、active、inactive-focused、inactiveのレイヤー名が並んでいる。縦に Normal と Active、横に Default・Hover・Focus・Disabled が並び、青い「押さないでね」ボタンと赤い「押しちゃったんですか？」ボタンが、それぞれ通常・ホバー・フォーカス・無効の色や枠線の違いで表示されている。"
+                        src="./img/form_figma_variant_design.png"
+                        alt="Figmaで作成したログインフォームの5つの状態（デフォルト、フォーカス、入力済み、エラー、無効）のデザイン案。メールアドレスとパスワードの入力欄、ログインボタンの変化を示している。。"
                         width="400"
                         height="300"
                         class="section__thinking--images"
                       />
-                      <figcaption
-                        class="section__thinking--images-figcaption"
-                      ></figcaption>
+                      <figcaption class="section__thinking--images-figcaption">
+                        図 :
+                        ログインフォームにおける各インタラクション状態（未入力・入力中・エラー発生時等）のデザインパターン
+                      </figcaption>
                     </figure>
                   </div>
                 </li>
                 <li class="section__thinking--case-list-inner">
                   <h5>html/CSS/JS例</h5>
+                  <p
+                    class="codepen"
+                    data-height="300"
+                    data-default-tab="html,result"
+                    data-slug-hash="WbwVvbq"
+                    data-pen-title="form"
+                    data-user="kanakoshin"
+                    style="
+                      height: 300px;
+                      box-sizing: border-box;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      border: 2px solid;
+                      margin: 1em 0;
+                      padding: 1em;
+                    "
+                  >
+                    <span
+                      >See the Pen
+                      <a href="https://codepen.io/kanakoshin/pen/WbwVvbq">
+                        form</a
+                      >
+                      by Kanako Koyanagi (<a
+                        href="https://codepen.io/kanakoshin"
+                        >@kanakoshin</a
+                      >) on <a href="https://codepen.io">CodePen</a>.</span
+                    >
+                  </p>
+                  <script
+                    defer
+                    src="https://public.codepenassets.com/embed/index.js"
+                  ></script>
                 </li>
               </ul>
             </div>
