@@ -204,18 +204,34 @@ li {
 
 main > section.section {
   margin-block: var(--space-xxl);
-} /* 基本 */
+}
 main > section.section:nth-of-type(2n + 3) {
   margin-block: var(--space-xxl);
-} /* 3,5,7… */
+}
 main > section.section:first-of-type {
   margin: var(--space-xxl) 0;
 }
 
-/* いまの指定は残してOK（paddingなどはそのまま活かす） */
+main > section.section:nth-of-type(even) {
+  position: relative;
+  padding: var(--space-xxl) 0;
+  z-index: 0; /* ::before を背面に回すための保険 */
+}
+
+/* 背景だけを画面端まで広げる */
+main > section.section:nth-of-type(even)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #f5f0e6;
+  box-shadow: 0 0 0 100vmax #f5f0e6;
+  clip-path: inset(0 -100vmax);
+  z-index: -1;
+}
+
 .section-backcolor {
-  position: relative; /* ← これを追加 */
-  background: transparent; /* 背景色は疑似要素に移す（任意） */
+  position: relative;
+  background: transparent;
   padding: var(--space-xxl) 0 var(--space-xxl);
 }
 
@@ -225,7 +241,7 @@ main > section.section:first-of-type {
   position: absolute;
   inset: 0; /* セクション全体を覆う */
   background: #f5f0e6;
-  /* ここがミソ：背景を左右に100vmaxぶん“はみ出させる” */
+  /* 背景を左右に100vmaxぶん“はみ出させる” */
   box-shadow: 0 0 0 100vmax #f5f0e6;
   clip-path: inset(0 -100vmax); /* はみ出し部分を描画対象に */
   z-index: -1; /* 背景として後ろへ */
@@ -262,6 +278,40 @@ main > section.section:first-of-type {
 
 .section-about__description--detail {
   line-height: 1.8;
+}
+
+.section-wish {
+  width: 100%;
+  display: grid;
+  gap: var(--space-l);
+}
+
+.section-wish--list {
+  display: grid;
+  gap: var(--space-s);
+}
+
+.section-wish--figcaption {
+  display: grid;
+  gap: var(--space-l);
+  justify-items: center; /* 子要素（img, figcaption）を横方向中央へ */
+}
+
+.section-wish--img {
+  width: min(60%, 700px); /* 例：最大幅もつけるとPCでデカすぎ防止 */
+  height: auto;
+}
+
+.section-wish--description-outer {
+  display: grid;
+  gap: var(--space-s);
+  height: 80%;
+}
+
+.section-wish--description {
+  display: grid;
+  gap: var(--space-s);
+  height: 20%;
 }
 
 /* 1) ULのデフォ余白をリセット（ズレ防止） */
@@ -335,7 +385,6 @@ main > section.section:first-of-type {
   text-align: center;
   --lh: 1.4;
   line-height: var(--lh);
-  /* フォントサイズに追従して2行分の高さを確保 */
   min-block-size: calc(2 * 1em * var(--lh));
 }
 
@@ -375,6 +424,8 @@ main > section.section:first-of-type {
   padding: 0.25em 0.5em; /*上下 左右の余白*/
   background: transparent; /*背景透明に*/
   border-left: solid 5px var(--main-color); /*左線*/
+  display: grid;
+  gap: var(--space-m);
 }
 
 .section__thinking--card {
