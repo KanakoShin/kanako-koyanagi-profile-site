@@ -294,11 +294,12 @@ main > section.section:nth-of-type(even)::before {
 .section-wish--figcaption {
   display: grid;
   gap: var(--space-l);
-  justify-items: center; /* 子要素（img, figcaption）を横方向中央へ */
+  justify-items: center;
+  text-align: center;
 }
 
 .section-wish--img {
-  width: min(60%, 700px); /* 例：最大幅もつけるとPCでデカすぎ防止 */
+  width: min(60%, 700px);
   height: auto;
 }
 
@@ -324,18 +325,19 @@ main > section.section:nth-of-type(even)::before {
   gap: var(--space-xl);
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
-/* (任意) 画像とテキストの間の余白を安定させる */
+
 .section-works__card {
   display: grid;
   gap: var(--space-xs);
 }
 
-/* 3) 画像をカード幅にフィットさせる */
 .section-works__thumb {
-  display: block; /* 画像下の隙間を消す */
-  width: 100%; /* 親（カード）幅いっぱい */
-  height: auto; /* 比率維持 */
+  display: block;
+  width: 100%;
   max-width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .section-works__title {
@@ -367,17 +369,17 @@ main > section.section:nth-of-type(even)::before {
 
 /* 3) 画像をカード幅にフィットさせる */
 .section-skills__thumb {
-  display: block; /* 画像下の隙間を消す */
-  width: 100%; /* 親（カード）幅いっぱい */
-  height: auto; /* 比率維持 */
+  display: block;
+  width: 100%;
+  height: auto;
   max-width: 100%;
 }
 
 .section-skills__card img {
   clip-path: circle(35%);
-  display: block; /* 画像下の隙間を消す */
-  width: 100%; /* 親（カード）幅いっぱい */
-  height: auto; /* 比率維持 */
+  display: block;
+  width: 100%;
+  height: auto;
   max-width: 100%;
 }
 
@@ -414,16 +416,16 @@ main > section.section:nth-of-type(even)::before {
 
 /* 3) 画像をカード幅にフィットさせる */
 .section-thinking__thumb {
-  display: block; /* 画像下の隙間を消す */
-  width: 100%; /* 親（カード）幅いっぱい */
-  height: auto; /* 比率維持 */
+  display: block;
+  width: 100%;
+  height: auto;
   max-width: 100%;
 }
 
 .section__thinking--h3 {
-  padding: 0.25em 0.5em; /*上下 左右の余白*/
-  background: transparent; /*背景透明に*/
-  border-left: solid 5px var(--main-color); /*左線*/
+  padding: 0.25em 0.5em;
+  background: transparent;
+  border-left: solid 5px var(--main-color);
   display: grid;
   gap: var(--space-m);
 }
