@@ -3,6 +3,9 @@
 
   /* ---- color ---- */
   --main-color: #70b7ff;
+  --background-color-main: #fff5e4;
+  --background-color-white: #fff;
+  --font-color-dark: #1e1e1e;
 
   /* ---- Scale (4px grid) ---- */
   --space-3xs: 0.125rem; /*  2px */
@@ -112,7 +115,7 @@ body {
   font-size: var(--space-m);
   line-height: var(--lh-body);
   font-family: var(--ff-body), var(--ff-emoji);
-  color: black;
+  color: var(--font-color-dark);
   margin: 0;
   padding-inline: var(--gutter);
 }
@@ -131,7 +134,7 @@ li {
   width: 100%;
 }
 
-/* スキップリンク（任意） */
+/* スキップリンク */
 .skip-link {
   position: absolute;
   left: -9999px;
@@ -195,7 +198,6 @@ li {
   margin-inline: calc(50% - 50vw);
 }
 .section {
-  /* margin: 80px 0; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -223,8 +225,8 @@ main > section.section:nth-of-type(even)::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: #f5f0e6;
-  box-shadow: 0 0 0 100vmax #f5f0e6;
+  background: #faf8f5;
+  box-shadow: 0 0 0 100vmax #faf8f5;
   clip-path: inset(0 -100vmax);
   z-index: -1;
 }
@@ -239,12 +241,11 @@ main > section.section:nth-of-type(even)::before {
 .section-backcolor::before {
   content: "";
   position: absolute;
-  inset: 0; /* セクション全体を覆う */
-  background: #f5f0e6;
-  /* 背景を左右に100vmaxぶん“はみ出させる” */
-  box-shadow: 0 0 0 100vmax #f5f0e6;
-  clip-path: inset(0 -100vmax); /* はみ出し部分を描画対象に */
-  z-index: -1; /* 背景として後ろへ */
+  inset: 0;
+  background: var(--background-color-main);
+  box-shadow: 0 0 0 100vmax var(--background-color-main);
+  clip-path: inset(0 -100vmax);
+  z-index: -1;
 }
 
 .section-title {
@@ -286,16 +287,14 @@ main > section.section:nth-of-type(even)::before {
   gap: var(--space-l);
 }
 
-.section-wish--list {
+.section-wish__list {
   display: grid;
-  gap: var(--space-s);
+  gap: var(--space-xxl);
 }
 
 .section-wish--figcaption {
   display: grid;
-  gap: var(--space-l);
-  justify-items: center;
-  text-align: center;
+  gap: var(--space-s);
 }
 
 .section-wish--img {
@@ -315,7 +314,6 @@ main > section.section:nth-of-type(even)::before {
   height: 20%;
 }
 
-/* 1) ULのデフォ余白をリセット（ズレ防止） */
 .section-works__list {
   width: 100%;
   margin: 0;
@@ -344,7 +342,7 @@ main > section.section:nth-of-type(even)::before {
   --lh: 1.4;
   line-height: var(--lh);
   /* フォントサイズに追従して2行分の高さを確保 */
-  min-block-size: calc(2 * 1em * var(--lh));
+  /* min-block-size: calc(2 * 1em * var(--lh)); */
 }
 
 /* .section-ability--img {
@@ -359,7 +357,6 @@ main > section.section:nth-of-type(even)::before {
   list-style: none;
   display: grid;
   gap: var(--space-xl);
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 .section-skills__card {
@@ -383,12 +380,11 @@ main > section.section:nth-of-type(even)::before {
   max-width: 100%;
 }
 
-.section-skills__card h3 {
-  text-align: center;
+/* .section-skills__card h3 {
   --lh: 1.4;
   line-height: var(--lh);
   min-block-size: calc(2 * 1em * var(--lh));
-}
+} */
 
 /* 思考セクション↓↓ */
 .section__thinking--content {
@@ -405,7 +401,6 @@ main > section.section:nth-of-type(even)::before {
 
   display: grid;
   gap: var(--space-xl);
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
 }
 
 /* (任意) 画像とテキストの間の余白を安定させる */
@@ -422,7 +417,7 @@ main > section.section:nth-of-type(even)::before {
   max-width: 100%;
 }
 
-.section__thinking--h3 {
+.section__tittle {
   padding: 0.25em 0.5em;
   background: transparent;
   border-left: solid 5px var(--main-color);
