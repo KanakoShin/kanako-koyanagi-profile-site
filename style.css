@@ -2,7 +2,7 @@
   --gutter: clamp(16px, 4vw, 32px);
 
   /* ---- color ---- */
-  --main-color: #70b7ff;
+  --main-color: #f0549e;
   --background-color-main: #fff5e4;
   --background-color-white: #fff;
   --font-color-dark: #1e1e1e;
@@ -159,24 +159,34 @@ li {
 }
 
 .hero {
-  position: relative;
+  padding: var(--space-l);
+  /* position: relative; */
 }
 .hero-copy {
-  display: inline-block;
+  /* display: inline-block;
   position: absolute;
   top: 10%;
-  left: 10%;
+  left: 10%; */
 }
 .hero-copy__letter {
-  font-size: var(--fs-4xl);
+  /* font-size: var(--fs-4xl); */
+  display: inline;
+  background: var(--main-color);
+  padding: 0.08em 0.18em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+
+  font-weight: 800;
+  font-size: clamp(32px, 5vw, 64px);
+  line-height: 1.15;
 }
 
-.hero-mainvisual {
+/* .hero-mainvisual {
   display: block;
   width: 100vw;
   height: 8rem;
   object-fit: cover;
-}
+} */
 
 .menu {
   display: flex;
@@ -198,10 +208,8 @@ li {
   margin-inline: calc(50% - 50vw);
 }
 .section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-content: center;
 }
 
 main > section.section {
@@ -254,18 +262,27 @@ main > section.section:nth-of-type(even)::before {
   font-size: var(--fs-3xl);
 }
 
-.section-about--flex {
-  display: flex;
-  gap: var(--space-m);
+.section-about--content {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  grid-template-areas:
+    "photo namejp"
+    "photo nameen"
+    "bio   bio";
+  gap: 8px 16px;
+  align-items: center;
 }
 
 .section-about__description--name-jp {
   font-size: var(--fs-2xl);
+  grid-area: namejp;
+  margin: 0;
 }
 .section-about__description--name-en {
   text-transform: uppercase;
   font-size: var(--fs-md);
-  padding-bottom: var(--space-m);
+  grid-area: nameen;
+  margin-top: -40px;
 }
 
 .section-about__description {
@@ -275,16 +292,25 @@ main > section.section:nth-of-type(even)::before {
 
 .section-about--img {
   clip-path: circle(50%);
+  grid-area: photo;
+  width: 100%;
+  max-width: 100px;
+  height: auto;
+}
+
+.section-about__bio {
+  grid-area: bio;
 }
 
 .section-about__description--detail {
   line-height: 1.8;
+  margin-top: var(--space-m);
 }
 
 .section-wish {
   width: 100%;
   display: grid;
-  gap: var(--space-l);
+  gap: var(--space-xxl);
 }
 
 .section-wish__list {
