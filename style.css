@@ -3,6 +3,7 @@
 
   /* ---- color ---- */
   --main-color: #f0549e;
+  --header-color: #101010;
   --background-color-main: #fff5e4;
   --background-color-white: #fff;
   --font-color-dark: #1e1e1e;
@@ -21,7 +22,7 @@
 
   /* ---- Semantic aliases（ここを調整して全体をコントロール） ---- */
   --space-page-inline: var(--space-l);
-  --space-section-block: var(--space-2xl);
+  --space-l-section-block: var(--space-2xl);
   --space-card-padding: var(--space-m);
   --space-card-gap: var(--space-s);
 
@@ -101,7 +102,7 @@
   :root {
     /* 画面が広い時だけ少し広げる */
     --space-page-inline: var(--space-xl);
-    --space-section-block: var(--space-3xl);
+    --space-l-section-block: var(--space-3xl);
     --space-card-padding: var(--space-l);
   }
 }
@@ -130,16 +131,16 @@ li {
 }
 
 /* PC用のCSSはメディアクエリの外に記述する */
-.container {
+.l-container {
   width: 100%;
 }
 
 /* スキップリンク */
-.skip-link {
+.u-skip-link {
   position: absolute;
   left: -9999px;
 }
-.skip-link:focus {
+.u-skip-link:focus {
   left: 0;
   top: 0;
   padding: var(--space-xs);
@@ -147,12 +148,12 @@ li {
   border: 2px solid;
 }
 
-.site-header--logo {
+.site-header__logo {
   padding: var(--space-xs) var(--space-xl);
-  background-color: black;
+  background-color: var(--header-color);
 }
 
-.site-header--logo-bland {
+.site-header__brand {
   text-decoration: none;
   color: white;
   font-size: var(--fs-4xl);
@@ -203,33 +204,33 @@ li {
   padding: 0px var(--space-m);
 }
 
-.full-bleed {
+.u-full-bleed {
   inline-size: 100vw;
   margin-inline: calc(50% - 50vw);
 }
-.section {
+.l-section {
   display: grid;
   place-content: center;
 }
 
-main > section.section {
+main > l-section.l-section {
   margin-block: var(--space-xxl);
 }
-main > section.section:nth-of-type(2n + 3) {
+main > l-section.l-section:nth-of-type(2n + 3) {
   margin-block: var(--space-xxl);
 }
-main > section.section:first-of-type {
+main > l-section.l-section:first-of-type {
   margin: var(--space-xxl) 0;
 }
 
-main > section.section:nth-of-type(even) {
+main > l-section.l-section:nth-of-type(even) {
   position: relative;
   padding: var(--space-xxl) 0;
   z-index: 0; /* ::before を背面に回すための保険 */
 }
 
 /* 背景だけを画面端まで広げる */
-main > section.section:nth-of-type(even)::before {
+main > l-section.l-section:nth-of-type(even)::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -239,14 +240,14 @@ main > section.section:nth-of-type(even)::before {
   z-index: -1;
 }
 
-.section-backcolor {
+.l-section-backcolor {
   position: relative;
   background: transparent;
   padding: var(--space-xxl) 0 var(--space-xxl);
 }
 
 /* 背景だけを画面端まで広げる */
-.section-backcolor::before {
+.l-section-backcolor::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -256,13 +257,13 @@ main > section.section:nth-of-type(even)::before {
   z-index: -1;
 }
 
-.section-title {
+.l-section-title {
   text-align: center;
   padding-bottom: var(--space-xxl);
   font-size: var(--fs-3xl);
 }
 
-.section-about--content {
+.l-section-about__content {
   display: grid;
   grid-template-columns: 120px 1fr;
   grid-template-areas:
@@ -273,24 +274,24 @@ main > section.section:nth-of-type(even)::before {
   align-items: center;
 }
 
-.section-about__description--name-jp {
+.l-section-about__name-jp {
   font-size: var(--fs-2xl);
   grid-area: namejp;
   margin: 0;
 }
-.section-about__description--name-en {
+.l-section-about__name-en {
   text-transform: uppercase;
   font-size: var(--fs-md);
   grid-area: nameen;
   margin-top: -40px;
 }
 
-.section-about__description {
+.l-section-about__description {
   display: flex;
   flex-direction: column;
 }
 
-.section-about--img {
+.l-section-about__img {
   clip-path: circle(50%);
   grid-area: photo;
   width: 100%;
@@ -298,49 +299,49 @@ main > section.section:nth-of-type(even)::before {
   height: auto;
 }
 
-.section-about__bio {
+.l-section-about__bio {
   grid-area: bio;
 }
 
-.section-about__description--detail {
+.l-section-about__detail {
   line-height: 1.8;
   margin-top: var(--space-m);
 }
 
-.section-wish {
+.l-section-wish {
   width: 100%;
   display: grid;
   gap: var(--space-xxl);
 }
 
-.section-wish__list {
+.l-section-wish__list {
   display: grid;
   gap: var(--space-xxl);
 }
 
-.section-wish--figcaption {
+.l-section-wish--figcaption {
   display: grid;
   gap: var(--space-s);
 }
 
-.section-wish--img {
+.l-section-wish--img {
   width: min(60%, 700px);
   height: auto;
 }
 
-.section-wish--description-outer {
+.l-section-wish--description-outer {
   display: grid;
   gap: var(--space-s);
   height: 80%;
 }
 
-.section-wish--description {
+.l-section-wish--description {
   display: grid;
   gap: var(--space-s);
   height: 20%;
 }
 
-.section-works__list {
+.l-section-works__list {
   width: 100%;
   margin: 0;
   padding: 0;
@@ -350,12 +351,12 @@ main > section.section:nth-of-type(even)::before {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
-.section-works__card {
+.l-section-works__card {
   display: grid;
   gap: var(--space-xs);
 }
 
-.section-works__thumb {
+.l-section-works__thumb {
   display: block;
   width: 100%;
   max-width: 100%;
@@ -364,19 +365,19 @@ main > section.section:nth-of-type(even)::before {
   object-position: center;
 }
 
-.section-works__title {
+.l-section-works__title {
   --lh: 1.4;
   line-height: var(--lh);
   /* フォントサイズに追従して2行分の高さを確保 */
   /* min-block-size: calc(2 * 1em * var(--lh)); */
 }
 
-/* .section-ability--img {
+/* .l-section-ability--img {
   clip-path: circle(35%);
 } */
 
 /* できることセクション↓↓ */
-.section-skills__list {
+.l-section-skills__list {
   width: 100%;
   margin: 0;
   padding: 0;
@@ -385,20 +386,20 @@ main > section.section:nth-of-type(even)::before {
   gap: var(--space-xl);
 }
 
-.section-skills__card {
+.l-section-skills__card {
   display: grid;
   gap: var(--space-xs);
 }
 
 /* 3) 画像をカード幅にフィットさせる */
-.section-skills__thumb {
+.l-section-skills__thumb {
   display: block;
   width: 100%;
   height: auto;
   max-width: 100%;
 }
 
-.section-skills__card img {
+.l-section-skills__card img {
   clip-path: circle(35%);
   display: block;
   width: 100%;
@@ -406,20 +407,20 @@ main > section.section:nth-of-type(even)::before {
   max-width: 100%;
 }
 
-/* .section-skills__card h3 {
+/* .l-section-skills__card h3 {
   --lh: 1.4;
   line-height: var(--lh);
   min-block-size: calc(2 * 1em * var(--lh));
 } */
 
 /* 思考セクション↓↓ */
-.section__thinking--content {
+.l-section-thinking__content {
   width: 100%;
   display: grid;
   gap: var(--space-3xl);
 }
 
-.section__thinking--list {
+.l-section-thinking__list {
   width: 100%;
   margin: 0;
   padding: 0;
@@ -430,20 +431,20 @@ main > section.section:nth-of-type(even)::before {
 }
 
 /* (任意) 画像とテキストの間の余白を安定させる */
-.section-thinking__card {
+.l-section-thinking__card {
   display: grid;
   gap: var(--space-xs);
 }
 
 /* 3) 画像をカード幅にフィットさせる */
-.section-thinking__thumb {
+.l-section-thinking__thumb {
   display: block;
   width: 100%;
   height: auto;
   max-width: 100%;
 }
 
-.section__tittle {
+.l-section__title {
   padding: 0.25em 0.5em;
   background: transparent;
   border-left: solid 5px var(--main-color);
@@ -451,48 +452,48 @@ main > section.section:nth-of-type(even)::before {
   gap: var(--space-m);
 }
 
-.section__thinking--card {
+.l-section-thinking__card {
   display: grid;
   gap: var(--space-m);
 }
 
-.section__thinking--case-wrapper {
+.l-section-thinking__case-wrapper {
   display: grid;
   gap: var(--space-l);
 }
 
-.section__thinking--case-content {
+.l-section-thinking__case-content {
   display: grid;
   gap: var(--space-m);
 }
 
-.section__thinking--case-title {
+.l-section-thinking__case-title {
   display: flex;
   gap: var(--space-m);
   border-bottom: 3px dotted var(--main-color);
 }
 
-.section__thinking--case-list {
+.l-section-thinking__case-list {
   display: grid;
   gap: var(--space-2xl);
 }
 
-.section__thinking--case-list-inner {
+.l-section-thinking__case-list-inner {
   display: grid;
   gap: var(--space-s);
 }
 
-.section__thinking--case-letter {
+.l-section-thinking__case-letter {
   padding-bottom: var(--space-xs);
 }
 
-.section__thinking--images {
+.l-section-thinking__images {
   width: 100%;
   height: auto;
   display: block;
 }
 
-.section__thinking--images-figcaption {
+.l-section-thinking__images-figcaption {
   padding-top: var(--space-s);
   font-size: var(--fs-sm);
 }
