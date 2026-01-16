@@ -22,7 +22,7 @@
 
   /* ---- Semantic aliases（ここを調整して全体をコントロール） ---- */
   --space-page-inline: var(--space-l);
-  --space-l-section-block: var(--space-2xl);
+  --space-section-block: var(--space-2xl);
   --space-card-padding: var(--space-m);
   --space-card-gap: var(--space-s);
 
@@ -102,7 +102,7 @@
   :root {
     /* 画面が広い時だけ少し広げる */
     --space-page-inline: var(--space-xl);
-    --space-l-section-block: var(--space-3xl);
+    --space-section-block: var(--space-3xl);
     --space-card-padding: var(--space-l);
   }
 }
@@ -119,9 +119,6 @@ body {
   color: var(--font-color-dark);
   margin: 0;
   padding-inline: var(--gutter);
-}
-
-body {
   font-size: var(--fs-body);
   line-height: var(--lh-body);
 }
@@ -130,7 +127,6 @@ li {
   list-style: none;
 }
 
-/* PC用のCSSはメディアクエリの外に記述する */
 .l-container {
   width: 100%;
 }
@@ -216,21 +212,21 @@ li {
 main > l-section.l-section {
   margin-block: var(--space-xxl);
 }
-main > l-section.l-section:nth-of-type(2n + 3) {
+main > section.l-section:nth-of-type(2n + 3) {
   margin-block: var(--space-xxl);
 }
-main > l-section.l-section:first-of-type {
+main > section.l-section:first-of-type {
   margin: var(--space-xxl) 0;
 }
 
-main > l-section.l-section:nth-of-type(even) {
+main > section.l-section:nth-of-type(even) {
   position: relative;
   padding: var(--space-xxl) 0;
   z-index: 0; /* ::before を背面に回すための保険 */
 }
 
 /* 背景だけを画面端まで広げる */
-main > l-section.l-section:nth-of-type(even)::before {
+main > section.l-section:nth-of-type(even)::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -263,7 +259,7 @@ main > l-section.l-section:nth-of-type(even)::before {
   font-size: var(--fs-3xl);
 }
 
-.l-section-about__content {
+.section-about__content {
   display: grid;
   grid-template-columns: 120px 1fr;
   grid-template-areas:
@@ -274,24 +270,24 @@ main > l-section.l-section:nth-of-type(even)::before {
   align-items: center;
 }
 
-.l-section-about__name-jp {
+.section-about__name-jp {
   font-size: var(--fs-2xl);
   grid-area: namejp;
   margin: 0;
 }
-.l-section-about__name-en {
+.section-about__name-en {
   text-transform: uppercase;
   font-size: var(--fs-md);
   grid-area: nameen;
   margin-top: -40px;
 }
 
-.l-section-about__description {
+.section-about__description {
   display: flex;
   flex-direction: column;
 }
 
-.l-section-about__img {
+.section-about__img {
   clip-path: circle(50%);
   grid-area: photo;
   width: 100%;
@@ -299,49 +295,49 @@ main > l-section.l-section:nth-of-type(even)::before {
   height: auto;
 }
 
-.l-section-about__bio {
+.section-about__bio {
   grid-area: bio;
 }
 
-.l-section-about__detail {
+.section-about__detail {
   line-height: 1.8;
   margin-top: var(--space-m);
 }
 
-.l-section-wish {
+.section-wish {
   width: 100%;
   display: grid;
   gap: var(--space-xxl);
 }
 
-.l-section-wish__list {
+.section-wish__list {
   display: grid;
   gap: var(--space-xxl);
 }
 
-.l-section-wish--figcaption {
+.section-wish__figcaption {
   display: grid;
   gap: var(--space-s);
 }
 
-.l-section-wish--img {
+.section-wish--img {
   width: min(60%, 700px);
   height: auto;
 }
 
-.l-section-wish--description-outer {
+.section-wish--description-outer {
   display: grid;
   gap: var(--space-s);
   height: 80%;
 }
 
-.l-section-wish--description {
+.section-wish--description {
   display: grid;
   gap: var(--space-s);
   height: 20%;
 }
 
-.l-section-works__list {
+.section-works__list {
   width: 100%;
   margin: 0;
   padding: 0;
@@ -351,12 +347,12 @@ main > l-section.l-section:nth-of-type(even)::before {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
-.l-section-works__card {
+.section-works__card {
   display: grid;
   gap: var(--space-xs);
 }
 
-.l-section-works__thumb {
+.section-works__thumb {
   display: block;
   width: 100%;
   max-width: 100%;
@@ -365,7 +361,7 @@ main > l-section.l-section:nth-of-type(even)::before {
   object-position: center;
 }
 
-.l-section-works__title {
+.section-works__title {
   --lh: 1.4;
   line-height: var(--lh);
   /* フォントサイズに追従して2行分の高さを確保 */
@@ -377,7 +373,7 @@ main > l-section.l-section:nth-of-type(even)::before {
 } */
 
 /* できることセクション↓↓ */
-.l-section-skills__list {
+.section-skills__list {
   width: 100%;
   margin: 0;
   padding: 0;
@@ -386,20 +382,20 @@ main > l-section.l-section:nth-of-type(even)::before {
   gap: var(--space-xl);
 }
 
-.l-section-skills__card {
+.section-skills__card {
   display: grid;
   gap: var(--space-xs);
 }
 
 /* 3) 画像をカード幅にフィットさせる */
-.l-section-skills__thumb {
+.section-skills__thumb {
   display: block;
   width: 100%;
   height: auto;
   max-width: 100%;
 }
 
-.l-section-skills__card img {
+.section-skills__card img {
   clip-path: circle(35%);
   display: block;
   width: 100%;
@@ -407,20 +403,20 @@ main > l-section.l-section:nth-of-type(even)::before {
   max-width: 100%;
 }
 
-/* .l-section-skills__card h3 {
+/* .section-skills__card h3 {
   --lh: 1.4;
   line-height: var(--lh);
   min-block-size: calc(2 * 1em * var(--lh));
 } */
 
 /* 思考セクション↓↓ */
-.l-section-thinking__content {
+.section-thinking__content {
   width: 100%;
   display: grid;
   gap: var(--space-3xl);
 }
 
-.l-section-thinking__list {
+.section-thinking__list {
   width: 100%;
   margin: 0;
   padding: 0;
@@ -431,13 +427,13 @@ main > l-section.l-section:nth-of-type(even)::before {
 }
 
 /* (任意) 画像とテキストの間の余白を安定させる */
-.l-section-thinking__card {
+.section-thinking__card {
   display: grid;
   gap: var(--space-xs);
 }
 
 /* 3) 画像をカード幅にフィットさせる */
-.l-section-thinking__thumb {
+.section-thinking__thumb {
   display: block;
   width: 100%;
   height: auto;
@@ -452,48 +448,48 @@ main > l-section.l-section:nth-of-type(even)::before {
   gap: var(--space-m);
 }
 
-.l-section-thinking__card {
+.section-thinking__card {
   display: grid;
   gap: var(--space-m);
 }
 
-.l-section-thinking__case-wrapper {
+.section-thinking__case-wrapper {
   display: grid;
   gap: var(--space-l);
 }
 
-.l-section-thinking__case-content {
+.section-thinking__case-content {
   display: grid;
   gap: var(--space-m);
 }
 
-.l-section-thinking__case-title {
+.section-thinking__case-title {
   display: flex;
   gap: var(--space-m);
   border-bottom: 3px dotted var(--main-color);
 }
 
-.l-section-thinking__case-list {
+.section-thinking__case-list {
   display: grid;
   gap: var(--space-2xl);
 }
 
-.l-section-thinking__case-list-inner {
+.section-thinking__case-list-inner {
   display: grid;
   gap: var(--space-s);
 }
 
-.l-section-thinking__case-letter {
+.section-thinking__case-letter {
   padding-bottom: var(--space-xs);
 }
 
-.l-section-thinking__images {
+.section-thinking__images {
   width: 100%;
   height: auto;
   display: block;
 }
 
-.l-section-thinking__images-figcaption {
+.section-thinking__images-figcaption {
   padding-top: var(--space-s);
   font-size: var(--fs-sm);
 }
