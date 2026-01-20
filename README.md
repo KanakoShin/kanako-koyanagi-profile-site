@@ -7,5 +7,3 @@
 
 ## CSSルール
 * 基本的にはBEMを使用
-* l- : Layout
-* u- : Utility

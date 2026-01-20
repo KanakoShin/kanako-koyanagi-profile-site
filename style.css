@@ -55,33 +55,6 @@
   --lh-heading: 1.25;
   --lh-body: 1.6;
 
-  h1,
-  h2,
-  h3,
-  h4 {
-    line-height: var(--lh-heading);
-  }
-
-  h1 {
-    font-size: var(--fs-h1);
-  }
-
-  h2 {
-    font-size: var(--fs-h2);
-  }
-
-  h3 {
-    font-size: var(--fs-h3);
-  }
-
-  h4 {
-    font-size: var(--fs-h4);
-  }
-
-  h5 {
-    font-size: var(--fs-h5);
-  }
-
   /* families */
   --ff-sans: system-ui, -apple-system, "Segoe UI", "Hiragino Kaku Gothic ProN",
     "Hiragino Sans", "Noto Sans JP", "Yu Gothic UI", Meiryo, Roboto,
@@ -113,7 +86,6 @@ html {
 }
 
 body {
-  font-size: var(--space-m);
   line-height: var(--lh-body);
   font-family: var(--ff-body), var(--ff-emoji);
   color: var(--font-color-dark);
@@ -121,6 +93,33 @@ body {
   padding-inline: var(--gutter);
   font-size: var(--fs-body);
   line-height: var(--lh-body);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: var(--lh-heading);
+}
+
+h1 {
+  font-size: var(--fs-h1);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+}
+
+h3 {
+  font-size: var(--fs-h3);
+}
+
+h4 {
+  font-size: var(--fs-h4);
+}
+
+h5 {
+  font-size: var(--fs-h5);
 }
 
 li {
@@ -132,11 +131,11 @@ li {
 }
 
 /* スキップリンク */
-.u-skip-link {
+.utility-skip-link {
   position: absolute;
   left: -9999px;
 }
-.u-skip-link:focus {
+.utility-skip-link:focus {
   left: 0;
   top: 0;
   padding: var(--space-xs);
@@ -159,31 +158,16 @@ li {
   padding: var(--space-l);
   /* position: relative; */
 }
-.hero-copy {
-  /* display: inline-block;
-  position: absolute;
-  top: 10%;
-  left: 10%; */
-}
+
 .hero-copy__letter {
-  /* font-size: var(--fs-4xl); */
   display: inline;
   background: var(--main-color);
   padding: 0.08em 0.18em;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
-
   font-weight: 800;
-  font-size: clamp(32px, 5vw, 64px);
   line-height: 1.15;
 }
-
-/* .hero-mainvisual {
-  display: block;
-  width: 100vw;
-  height: 8rem;
-  object-fit: cover;
-} */
 
 .menu {
   display: flex;
@@ -200,33 +184,33 @@ li {
   padding: 0px var(--space-m);
 }
 
-.u-full-bleed {
+.utility-full-bleed {
   inline-size: 100vw;
   margin-inline: calc(50% - 50vw);
 }
-.l-section {
+.layout-section {
   display: grid;
   place-content: center;
 }
 
-main > section.l-section {
+main > section.layout-section {
   margin-block: var(--space-xxl);
 }
-main > section.l-section:nth-of-type(2n + 3) {
+main > section.layout-section:nth-of-type(2n + 3) {
   margin-block: var(--space-xxl);
 }
-main > section.l-section:first-of-type {
+main > section.layout-section:first-of-type {
   margin: var(--space-xxl) 0;
 }
 
-main > section.l-section:nth-of-type(even) {
+main > section.layout-section:nth-of-type(even) {
   position: relative;
   padding: var(--space-xxl) 0;
   z-index: 0; /* ::before を背面に回すための保険 */
 }
 
 /* 背景だけを画面端まで広げる */
-main > section.l-section:nth-of-type(even)::before {
+main > section.layout-section:nth-of-type(even)::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -236,14 +220,14 @@ main > section.l-section:nth-of-type(even)::before {
   z-index: -1;
 }
 
-.l-section-backcolor {
+.layout-section--backgroundcolor {
   position: relative;
   background: transparent;
   padding: var(--space-xxl) 0 var(--space-xxl);
 }
 
 /* 背景だけを画面端まで広げる */
-.l-section-backcolor::before {
+.layout-section--backgroundcolor::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -253,10 +237,10 @@ main > section.l-section:nth-of-type(even)::before {
   z-index: -1;
 }
 
-.l-section-title {
+.layout-section--title {
+  display: inline;
   text-align: center;
   padding-bottom: var(--space-xxl);
-  font-size: var(--fs-3xl);
 }
 
 .section-about__content {
@@ -364,13 +348,7 @@ main > section.l-section:nth-of-type(even)::before {
 .section-works__title {
   --lh: 1.4;
   line-height: var(--lh);
-  /* フォントサイズに追従して2行分の高さを確保 */
-  /* min-block-size: calc(2 * 1em * var(--lh)); */
 }
-
-/* .l-section-ability--img {
-  clip-path: circle(35%);
-} */
 
 /* できることセクション↓↓ */
 .section-skills__list {
@@ -440,7 +418,7 @@ main > section.l-section:nth-of-type(even)::before {
   max-width: 100%;
 }
 
-.l-section__title {
+.layout-section__title {
   padding: 0.25em 0.5em;
   background: transparent;
   border-left: solid 5px var(--main-color);
@@ -466,12 +444,13 @@ main > section.l-section:nth-of-type(even)::before {
 .section-thinking__case-title {
   display: flex;
   gap: var(--space-m);
-  border-bottom: 3px dotted var(--main-color);
+  border-bottom: 1px solid var(--main-color);
 }
 
 .section-thinking__case-list {
   display: grid;
   gap: var(--space-2xl);
+  margin-bottom: var(--space-3xl);
 }
 
 .section-thinking__case-list-inner {

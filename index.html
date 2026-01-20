@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="l-container">
-    <a class="u-skip-link" href="#main">本文へスキップ</a>
-    <header class="site-header u-full-bleed">
+    <a class="utility-skip-link" href="#main">本文へスキップ</a>
+    <header class="site-header utility-full-bleed">
       <div class="">
         <div class="site-header__logo">
           <a href="/" class="site-header__brand">Kanako Koyanagi</a>
@@ -23,7 +23,7 @@
     </header>
 
     <main id="main">
-      <div class="hero u-full-bleed">
+      <div class="hero utility-full-bleed">
         <div class="hero-copy">
           <h1 class="hero-copy__letter">
             デザインの意図を、<br />実装につなぐ<br />マークアップを目指します。
@@ -31,9 +31,11 @@
         </div>
       </div>
 
-      <section id="about" class="l-section">
+      <section id="about" class="layout-section">
         <div class="section-about">
-          <h2 class="l-section-title u-full-bleed">略歴</h2>
+          <div class="layout-section--title">
+            <h2 class="">略歴</h2>
+          </div>
           <div class="section-about__content">
             <img
               src="./img/profile.png"
@@ -62,8 +64,10 @@
         </div>
       </section>
 
-      <section class="l-section">
-        <h2 class="l-section-title u-full-bleed">今後やりたいこと</h2>
+      <section class="layout-section">
+        <h2 class="layout-section--title utility-full-bleed">
+          今後やりたいこと
+        </h2>
         <ul class="section-wish">
           <li class="section-wish__list">
             <div class="">
@@ -132,8 +136,8 @@
         </ul>
       </section>
 
-      <section id="work" class="l-section section-works">
-        <h2 class="l-section-title u-full-bleed">やってきたこと</h2>
+      <section id="work" class="layout-section section-works">
+        <h2 class="layout-section--title utility-full-bleed">やってきたこと</h2>
         <ul class="section-works__list">
           <li>
             <div class="section-works__card">
@@ -191,8 +195,8 @@
         </ul>
       </section>
 
-      <section class="l-section" id="skills">
-        <h2 class="l-section-title u-full-bleed">できること</h2>
+      <section class="layout-section" id="skills">
+        <h2 class="layout-section--title utility-full-bleed">できること</h2>
         <ul class="section-skills__list">
           <li>
             <div class="section-skills__card">
@@ -258,7 +262,7 @@
             <div class="section-skills__card">
               <h3 class="">デザイン×実装の橋渡し</h3>
               <p>
-                JavaScriptを用いた基本的なUIインタラクションの実装や、
+                JavaScriptを用いたごく基本的なUIインタラクションの実装や、
                 UIライブラリ（MUIなど）のカスタマイズ経験があります。<br />
                 フロントエンドエンジニアの専門領域を担うことはありませんが、
                 実装の仕組みを理解した上で、
@@ -269,11 +273,13 @@
         </ul>
       </section>
 
-      <section class="l-section">
-        <h2 class="l-section-title u-full-bleed">デザイン設計思考</h2>
-        <div class="l-section__thinking">
+      <section class="layout-section">
+        <h2 class="layout-section--title utility-full-bleed">
+          デザイン設計思考
+        </h2>
+        <div class="layout-section__thinking">
           <div class="section-thinking__content">
-            <h3 class="l-section__title">思考の概要</h3>
+            <h3 class="layout-section__title">思考の概要</h3>
             <ul class="section-thinking__list">
               <li>
                 <div class="section-thinking__card">
@@ -324,14 +330,16 @@
               </li>
             </ul>
             <div class="section-thinking__case-wrapper">
-              <h3 class="l-section__title">figmaでのデザインとコード対応</h3>
+              <h3 class="layout-section__title">
+                figmaでのデザインとコード対応
+              </h3>
               <div class="section-thinking__case-content">
                 <div class="section-thinking__case-title">
                   <h4>Case1 ボタン</h4>
                   <p>命名の一貫性</p>
                 </div>
                 <p class="section-thinking__case-letter">
-                  初歩的なことではありますが、状態による変化の管理やコンポート名の命名に一貫性を持たせることを気をつけています。
+                  状態による変化の管理やコンポート名の命名に一貫性を持たせることを気をつけています。
                 </p>
                 <ul class="section-thinking__case-list">
                   <li class="section-thinking__case-list-inner">
