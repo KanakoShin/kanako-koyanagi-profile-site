@@ -4,7 +4,7 @@
   /* ---- color ---- */
   --main-color: #f0549e;
   --header-color: #101010;
-  --background-color-main: #fff5e4;
+  --background-color-main: #faf8f5;
   --background-color-white: #fff;
   --font-color-dark: #1e1e1e;
 
@@ -19,15 +19,7 @@
   --space-xxl: 2.5rem; /* 40px */
   --space-2xl: 3rem; /* 48px */
   --space-3xl: 4rem; /* 64px */
-
-  /* ---- Semantic aliases（ここを調整して全体をコントロール） ---- */
-  --space-page-inline: var(--space-l);
-  --space-section-block: var(--space-2xl);
-  --space-card-padding: var(--space-m);
-  --space-card-gap: var(--space-s);
-
-  /* optional: 負のマージンが要る時用 */
-  --space-neg-xs: calc(var(--space-xs) * -1);
+  --space-main: 8rem; /* 128px */
 
   /* ---- Font size scale (rem) ---- */
   --fs-2xs: 0.75rem; /* 12px */
@@ -51,21 +43,24 @@
   --fs-h4: clamp(var(--fs-md), calc(var(--fs-sm) + 0.8vw), var(--fs-lg));
   --fs-h5: clamp(var(--fs-sm), calc(var(--fs-2xs) + 0.8vw), var(--fs-md));
 
-  /* 行間は単位なしで固定 */
+  /* 行間 */
   --lh-heading: 1.25;
   --lh-body: 1.6;
 
   /* families */
-  --ff-sans: system-ui, -apple-system, "Segoe UI", "Hiragino Kaku Gothic ProN",
+  --ff-sans:
+    system-ui, -apple-system, "Segoe UI", "Hiragino Kaku Gothic ProN",
     "Hiragino Sans", "Noto Sans JP", "Yu Gothic UI", Meiryo, Roboto,
     "Helvetica Neue", Arial, sans-serif;
-  --ff-serif: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN",
-    "Times New Roman", serif;
-  --ff-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  --ff-serif:
+    "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", "Times New Roman",
+    serif;
+  --ff-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
   --ff-emoji: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
 
-  /* semantic aliases（差し替えはここだけ） */
+  /* semantic aliases */
   --ff-body: var(--ff-sans);
   --ff-heading: var(--ff-sans);
   --ff-code: var(--ff-mono);
@@ -122,6 +117,19 @@ h5 {
   font-size: var(--fs-h5);
 }
 
+main {
+  display: grid;
+  gap: 0;
+}
+
+main > section.layout-section {
+  padding-block-start: var(--space-main);
+}
+
+main > section.layout-section:first-of-type {
+  padding-block-start: 0;
+}
+
 li {
   list-style: none;
 }
@@ -139,7 +147,7 @@ li {
   left: 0;
   top: 0;
   padding: var(--space-xs);
-  background: #fff;
+  background: var(--background-color-white);
   border: 2px solid;
 }
 
@@ -150,7 +158,7 @@ li {
 
 .site-header__brand {
   text-decoration: none;
-  color: white;
+  color: var(--background-color-white);
   font-size: var(--fs-4xl);
 }
 
@@ -169,21 +177,6 @@ li {
   line-height: 1.15;
 }
 
-.menu {
-  display: flex;
-  gap: var(--space-m);
-  justify-content: flex-end;
-  padding: var(--space-m);
-}
-.menu-list + .menu-list {
-  border-left: 1px solid grey;
-}
-.menu-link {
-  text-decoration: none;
-  color: black;
-  padding: 0px var(--space-m);
-}
-
 .utility-full-bleed {
   inline-size: 100vw;
   margin-inline: calc(50% - 50vw);
@@ -193,7 +186,7 @@ li {
   place-content: center;
 }
 
-main > section.layout-section {
+/* main > section.layout-section {
   margin-block: var(--space-xxl);
 }
 main > section.layout-section:nth-of-type(2n + 3) {
@@ -206,28 +199,11 @@ main > section.layout-section:first-of-type {
 main > section.layout-section:nth-of-type(even) {
   position: relative;
   padding: var(--space-xxl) 0;
-  z-index: 0; /* ::before を背面に回すための保険 */
-}
+  z-index: 0;
+} */
 
 /* 背景だけを画面端まで広げる */
-main > section.layout-section:nth-of-type(even)::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: #faf8f5;
-  box-shadow: 0 0 0 100vmax #faf8f5;
-  clip-path: inset(0 -100vmax);
-  z-index: -1;
-}
-
-.layout-section--backgroundcolor {
-  position: relative;
-  background: transparent;
-  padding: var(--space-xxl) 0 var(--space-xxl);
-}
-
-/* 背景だけを画面端まで広げる */
-.layout-section--backgroundcolor::before {
+/* main > section.layout-section:nth-of-type(even)::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -237,10 +213,31 @@ main > section.layout-section:nth-of-type(even)::before {
   z-index: -1;
 }
 
+.layout-section--backgroundcolor {
+  position: relative;
+  background: transparent;
+  padding: var(--space-xxl) 0 var(--space-xxl);
+} */
+
+/* 背景だけを画面端まで広げる */
+/* .layout-section--backgroundcolor::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--background-color-main);
+  box-shadow: 0 0 0 100vmax var(--background-color-main);
+  clip-path: inset(0 -100vmax);
+  z-index: -1;
+} */
+
 .layout-section--title {
   display: inline;
   text-align: center;
   padding-bottom: var(--space-xxl);
+}
+
+.section-about {
+  display: grid;
 }
 
 .section-about__content {
@@ -299,9 +296,15 @@ main > section.layout-section:nth-of-type(even)::before {
   gap: var(--space-xxl);
 }
 
+.section-wish__list--inner {
+  display: grid;
+  gap: var(--space-m);
+}
+
 .section-wish__figcaption {
   display: grid;
   gap: var(--space-s);
+  padding-bottom: var(--space-xl);
 }
 
 .section-wish--img {
@@ -380,12 +383,6 @@ main > section.layout-section:nth-of-type(even)::before {
   height: auto;
   max-width: 100%;
 }
-
-/* .section-skills__card h3 {
-  --lh: 1.4;
-  line-height: var(--lh);
-  min-block-size: calc(2 * 1em * var(--lh));
-} */
 
 /* 思考セクション↓↓ */
 .section-thinking__content {
@@ -471,8 +468,4 @@ main > section.layout-section:nth-of-type(even)::before {
 .section-thinking__images-figcaption {
   padding-top: var(--space-s);
   font-size: var(--fs-sm);
-}
-
-@media (min-width: 60em) {
-  /* 約960px(16px基準)。既定サイズが20pxなら1200px相当にスケール */
 }
