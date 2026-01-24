@@ -1,0 +1,195 @@
+:root {
+  --color-primary-middle-light: #2c81d6;
+  --color-primary-dark: #004387;
+  --color-font-light: #5a5a5a;
+  --color-disabled: #c5c5c5;
+  --radius: 50px;
+  --card-tag-border: 1px solid;
+  --space-2xs: 0.25rem; /* 4px */
+  --space-xs: 0.5rem; /*  8px */
+  --space-m: 1rem; /* 16px */
+  --space-l: 1.5rem; /* 24px */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: var(--space-l);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xxl);
+  align-items: center; /* header と main を中央へ */
+}
+
+p {
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper__card {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-l);
+}
+
+.card {
+  text-align: left;
+  transition: filter 0.2s ease;
+  display: grid;
+  gap: var(--space-m);
+}
+
+.card:hover,
+.card:focus-within {
+  filter: brightness(1.2);
+  cursor: pointer;
+}
+
+.card__body {
+  display: grid;
+  gap: var(--space-m);
+}
+
+.card__thumbnail {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.card__date-tag {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.card__date {
+  color: var(--color-font-light);
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.card__tag {
+  color: var(--color-primary-dark);
+  padding: var(--space-2xs) var(--space-xs);
+  border: var(--card-tag-border) var(--color-disabled);
+  border-radius: var(--radius);
+}
+
+.card__button {
+  display: flex;
+  gap: var(--space-2xs);
+  justify-content: flex-end;
+}
+
+.card__title,
+.card__button--text {
+  transition: color 0.2s ease;
+}
+
+.card:hover .card__title {
+  color: var(--color-primary-dark);
+}
+
+.card__button--text {
+  color: var(--color-primary-dark);
+}
+.card:hover .card__button--text {
+  color: var(--color-primary-middle-light);
+}
+
+/* カード全体を1リンク化（文字色は継承） */
+.card__link {
+  display: grid;
+  gap: var(--space-m);
+  text-decoration: none;
+  color: inherit;
+  border-radius: 12px;
+}
+
+/* キーボードでも見えるフォーカスリング */
+.card__link:focus-visible {
+  outline: 3px solid var(--color-primary-dark);
+  outline-offset: 4px;
+}
+
+.card__button {
+  color: var(--color-primary-dark);
+}
+.card__link:hover .card__button,
+.card__link:focus-visible .card__button {
+  color: var(--color-primary-middle-light);
+}
+
+.card__button--text {
+  color: currentColor;
+}
+
+.icon {
+  transition: transform 0.15s ease;
+}
+.card__link:hover .icon,
+.card__link:focus-visible .icon {
+  transform: translateX(2px);
+}
+
+/*Tablet*/
+@media (max-width: 1024px) {
+  /* 4 → 2 列に */
+  .wrapper__card {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-m);
+  }
+
+  .card__thumbnail {
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  /* 1 列に */
+  .wrapper__card {
+    grid-template-columns: 1fr;
+    gap: var(--space-m);
+  }
+
+  .card,
+  .card__link {
+    gap: var(--space-m);
+  }
+
+  .card__thumbnail {
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .card__title {
+    line-height: 1.4;
+  }
+}
+
+/* Hoverのない端末では明るくするのを無効化 */
+@media (hover: none) {
+  .card:hover,
+  .card:focus-within {
+    filter: none;
+  }
+}
