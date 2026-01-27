@@ -33,10 +33,10 @@
   --fs-5xl: 2.25rem; /* 36px */
   --fs-6xl: 3rem; /* 48px */
 
-  /* 本文は固定（日本語は16px以上推奨） */
+  /* 本文 */
   --fs-body: var(--fs-md);
 
-  /* 見出しはclampで流体化（min / preferred / max） */
+  /* 見出し（min / preferred / max） */
   --fs-h1: clamp(var(--fs-3xl), calc(var(--fs-2xl) + 2.5vw), var(--fs-4xl));
   --fs-h2: clamp(var(--fs-xl), calc(var(--fs-lg) + 2vw), var(--fs-2xl));
   --fs-h3: clamp(var(--fs-lg), calc(var(--fs-md) + 1.2vw), var(--fs-xl));
@@ -120,6 +120,8 @@ h5 {
 main {
   display: grid;
   gap: 0;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 main > section.layout-section {
@@ -134,9 +136,23 @@ li {
   list-style: none;
 }
 
-.l-container {
+/* ---- layout ---- */
+.layout-container {
   width: 100%;
 }
+.layout-section {
+  display: grid;
+  /* place-content: center; */
+  justify-items: center;
+}
+
+.layout-section--title {
+  display: inline;
+  text-align: center;
+  padding-bottom: var(--space-3xl);
+}
+
+/* ---- utility ---- */
 
 /* スキップリンク */
 .utility-skip-link {
@@ -150,6 +166,12 @@ li {
   background: var(--background-color-white);
   border: 2px solid;
 }
+.utility-full-bleed {
+  inline-size: 100vw;
+  margin-inline: calc(50% - 50vw);
+}
+
+/* ---- header ---- */
 
 .site-header__logo {
   padding: var(--space-xs) var(--space-xl);
@@ -163,8 +185,7 @@ li {
 }
 
 .hero {
-  padding: var(--space-l);
-  /* position: relative; */
+  padding: var(--space-3xl) 0 var(--space-main);
 }
 
 .hero-copy__letter {
@@ -175,65 +196,6 @@ li {
   -webkit-box-decoration-break: clone;
   font-weight: 800;
   line-height: 1.15;
-}
-
-.utility-full-bleed {
-  inline-size: 100vw;
-  margin-inline: calc(50% - 50vw);
-}
-.layout-section {
-  display: grid;
-  place-content: center;
-}
-
-/* main > section.layout-section {
-  margin-block: var(--space-xxl);
-}
-main > section.layout-section:nth-of-type(2n + 3) {
-  margin-block: var(--space-xxl);
-}
-main > section.layout-section:first-of-type {
-  margin: var(--space-xxl) 0;
-}
-
-main > section.layout-section:nth-of-type(even) {
-  position: relative;
-  padding: var(--space-xxl) 0;
-  z-index: 0;
-} */
-
-/* 背景だけを画面端まで広げる */
-/* main > section.layout-section:nth-of-type(even)::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--background-color-main);
-  box-shadow: 0 0 0 100vmax var(--background-color-main);
-  clip-path: inset(0 -100vmax);
-  z-index: -1;
-}
-
-.layout-section--backgroundcolor {
-  position: relative;
-  background: transparent;
-  padding: var(--space-xxl) 0 var(--space-xxl);
-} */
-
-/* 背景だけを画面端まで広げる */
-/* .layout-section--backgroundcolor::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--background-color-main);
-  box-shadow: 0 0 0 100vmax var(--background-color-main);
-  clip-path: inset(0 -100vmax);
-  z-index: -1;
-} */
-
-.layout-section--title {
-  display: inline;
-  text-align: center;
-  padding-bottom: var(--space-xxl);
 }
 
 .section-about {
@@ -307,7 +269,7 @@ main > section.layout-section:nth-of-type(even) {
   padding-bottom: var(--space-xl);
 }
 
-.section-wish--img {
+.section-wish__img {
   width: min(60%, 700px);
   height: auto;
 }
@@ -324,6 +286,26 @@ main > section.layout-section:nth-of-type(even) {
   height: 20%;
 }
 
+.section-accessibility ul li {
+  list-style: square;
+  list-style-position: inside;
+}
+
+.section-accessibility__img {
+  width: min(60%, 700px);
+  height: auto;
+}
+
+.section-accessibility__omake {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.section-accessibility__omake--inner {
+  display: grid;
+  gap: var(--space-s);
+}
+
 .section-works__list {
   width: 100%;
   margin: 0;
@@ -331,7 +313,7 @@ main > section.layout-section:nth-of-type(even) {
   list-style: none;
   display: grid;
   gap: var(--space-xl);
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
 }
 
 .section-works__card {
@@ -366,22 +348,6 @@ main > section.layout-section:nth-of-type(even) {
 .section-skills__card {
   display: grid;
   gap: var(--space-xs);
-}
-
-/* 3) 画像をカード幅にフィットさせる */
-.section-skills__thumb {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-}
-
-.section-skills__card img {
-  clip-path: circle(35%);
-  display: block;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
 }
 
 /* 思考セクション↓↓ */
@@ -468,4 +434,10 @@ main > section.layout-section:nth-of-type(even) {
 .section-thinking__images-figcaption {
   padding-top: var(--space-s);
   font-size: var(--fs-sm);
+}
+
+@media (max-width: 767px) {
+  .section-works__list {
+    grid-template-columns: 1fr;
+  }
 }
