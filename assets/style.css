@@ -445,3 +445,9 @@ li {
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 480px) {
+  .hero-copy__letter {
+    font-size: clamp(var(--fs-2xl), 7vw, var(--fs-4xl));
+  }
+}
