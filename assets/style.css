@@ -124,6 +124,7 @@ main {
   max-width: 800px;
   margin: 0 auto;
   min-width: 0;
+  width: 100%;
 }
 
 main > section.layout-section {
@@ -448,6 +449,7 @@ li {
 }
 
 .section-thinking__case-list-inner {
+  min-width: 0;
   display: grid;
   gap: var(--space-s);
 }
@@ -466,6 +468,8 @@ li {
   padding-top: var(--space-s);
   font-size: var(--fs-sm);
 }
+
+
 
 @media (max-width: 767px) {
   .section-works__list {
