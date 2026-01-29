@@ -15,9 +15,9 @@
 ## デザインについて
 
 このポートフォリオは、限られた時間の中で制作する必要がありました。
-そのため、優先順位を　コンテンツとマークアップ > 見た目 にしています。
+そのため、優先順位を　コンテンツとマークアップ > 見た目 にしています。<br/>
 よって、完成したデザインカンプを起点にするのではなく、
-HTML構造を起点としてCSSでレイアウトや余白を調整しました。
+HTML構造を起点としてCSSでレイアウトや余白を調整しました。<br/>
 
 また、細かいレスポンシブ対応はしていませんが、
 gridスタイルなどの活用で、最低限対応しています。
@@ -25,14 +25,17 @@ gridスタイルなどの活用で、最低限対応しています。
 ## 画像について
 
 本来であれば、ユーザー体験のために必須ですが、
-時間削減のためレスポンシブ画像を使用していません。
+時間削減のためレスポンシブ画像を使用していません。<br/>
 
 ## アクセシビリティ対応について
 
-- [Accessibility Visualizer](https://chromewebstore.google.com/detail/accessibility-visualizer/idcacekakoknnpbfjcdhnkffgfbddnhk)を使用してのチェック※スクリーンリーダーまではテストできていません
+- [Accessibility Visualizer](https://chromewebstore.google.com/detail/accessibility-visualizer/idcacekakoknnpbfjcdhnkffgfbddnhk)を使用してのチェック ※スクリーンリーダーまではテストできていません
 - 文字と背景色の充分なコントラスト比
 - 適切なhtmlマークアップを目指す
+- altタグの代替テキストを適切に入れる
+- 画像にfigure要素を使用
 - スキップリンクの配置
+- 可能な限り文言の認知負荷を下げる
 
 ## 表示パフォーマンスについて
 

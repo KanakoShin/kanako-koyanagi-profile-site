@@ -66,28 +66,7 @@
   --ff-code: var(--ff-mono);
 }
 
-/* ---- スマホはみ出し対策 ---- */
-@media (max-width: 480px) {
-  :root {
-    --fs-h1: clamp(var(--fs-2xl), 7vw, var(--fs-4xl));
-  }
-}
 
-/* ---- 画面が広い時だけ少し広げる ---- */
-@media (min-width: 768px) {
-  :root {
-    --space-page-inline: var(--space-xl);
-    --space-section-block: var(--space-3xl);
-    --space-card-padding: var(--space-l);
-  }
-}
-
-/* ---- 767px以下でgridカラムをひとつに ---- */
-@media (max-width: 767px) {
-  .section-works__list {
-    grid-template-columns: 1fr;
-  }
-}
 
 html {
   font-size: 100%;
@@ -143,11 +122,7 @@ main {
 }
 
 main > section.layout-section {
-  padding-block-start: var(--space-main);
-}
-
-main > section.layout-section:first-of-type {
-  padding-block-start: 0;
+  padding-block-end: var(--space-main);
 }
 
 section,
@@ -228,9 +203,13 @@ li {
 
 /* ---- header ---- */
 
-.site-header__logo {
-  padding: var(--space-xs) var(--space-xl);
+.site-header {
   background-color: var(--header-color);
+  padding-inline: var(--gutter);
+}
+
+.site-header__logo {
+  padding: var(--space-xs) 0;
 }
 
 .site-header__brand {
@@ -239,23 +218,68 @@ li {
   font-size: var(--fs-4xl);
 }
 
+.site-header--inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-m);
+}
+
+.site-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav__link {
+  display: inline-block;
+  padding: 0.5rem 0.6rem;
+  text-decoration: none;
+  color: var(--background-color-white);
+  font-size: var(--fs-sm);
+}
+.site-nav__link:last-child {
+  padding: 0.5rem 0 0.5rem 0.6rem;
+}
+
+/* キーボード操作の見やすさ（重要） */
+.site-nav__link:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+.site-nav__link:hover {
+  text-decoration: underline;
+}
+
+/* スマホで詰まる場合は縦に */
+@media (max-width: 480px) {
+  .site-header--inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 /* ---- hero ---- */
 
 .hero {
   min-width: 0;
-  padding: var(--space-3xl) 0 var(--space-main);
+  padding: var(--space-3xl) 0;
 }
 
 .hero-copy__letter {
   display: inline;
   background: var(--main-color);
-  padding: 0.08em 0.18em;
+  padding: 0.08rem 0.18rem;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
   font-weight: 800;
   line-height: 1.15;
   max-inline-size: 100%;
-  overflow-wrap: anywhere; /* 万一でも折り返す */
+  overflow-wrap: anywhere;
   word-break: normal;
 }
 
@@ -332,10 +356,11 @@ li {
   display: grid;
   gap: var(--space-s);
   padding-bottom: var(--space-xl);
+  place-content: center;
 }
 
 .section-wish__img {
-  width: min(60%, 700px);
+  width: min(100%, 700px);
   height: auto;
 }
 
@@ -525,4 +550,27 @@ li {
   width: 100% !important;
   max-width: 100% !important;
   display: block;
+}
+
+/* ---- スマホはみ出し対策 ---- */
+@media (max-width: 480px) {
+  :root {
+    --fs-h1: clamp(var(--fs-2xl), 7vw, var(--fs-4xl));
+  }
+}
+
+/* ---- 画面が広い時だけ少し広げる ---- */
+@media (min-width: 768px) {
+  :root {
+    --space-page-inline: var(--space-xl);
+    --space-section-block: var(--space-3xl);
+    --space-card-padding: var(--space-l);
+  }
+}
+
+/* ---- 767px以下でgridカラムをひとつに ---- */
+@media (max-width: 767px) {
+  .section-works__list {
+    grid-template-columns: 1fr;
+  }
 }
