@@ -66,18 +66,33 @@
   --ff-code: var(--ff-mono);
 }
 
+/* ---- スマホはみ出し対策 ---- */
+@media (max-width: 480px) {
+  :root {
+    --fs-h1: clamp(var(--fs-2xl), 7vw, var(--fs-4xl));
+  }
+}
+
+/* ---- 画面が広い時だけ少し広げる ---- */
 @media (min-width: 768px) {
   :root {
-    /* 画面が広い時だけ少し広げる */
     --space-page-inline: var(--space-xl);
     --space-section-block: var(--space-3xl);
     --space-card-padding: var(--space-l);
   }
 }
 
+/* ---- 767px以下でgridカラムをひとつに ---- */
+@media (max-width: 767px) {
+  .section-works__list {
+    grid-template-columns: 1fr;
+  }
+}
+
 html {
   font-size: 100%;
   font-family: var(--ff-body), var(--ff-emoji);
+  overflow-x: hidden;
 }
 
 body {
@@ -88,7 +103,7 @@ body {
   padding-inline: var(--gutter);
   font-size: var(--fs-body);
   line-height: var(--lh-body);
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 
 h1,
@@ -165,19 +180,29 @@ li {
 }
 
 /* ---- layout ---- */
+
 .layout-container {
   width: 100%;
 }
 .layout-section {
   display: grid;
-  /* place-content: center; */
   justify-items: center;
 }
 
+/* 各セクションタイトル */
 .layout-section--title {
-  display: inline;
+  display: block;
   text-align: center;
-  padding-bottom: var(--space-3xl);
+  margin: var(--space-3xl);
+}
+
+/* 各セクションタイトル */
+.layout-section--subtitle {
+  padding: 0.25em 0.5em;
+  background: transparent;
+  border-left: solid 5px var(--main-color);
+  display: grid;
+  gap: var(--space-m);
 }
 
 /* ---- utility ---- */
@@ -194,6 +219,8 @@ li {
   background: var(--background-color-white);
   border: 2px solid;
 }
+
+/* 幅いっぱい広げる */
 .utility-full-bleed {
   inline-size: 100vw;
   margin-inline: calc(50% - 50vw);
@@ -212,6 +239,8 @@ li {
   font-size: var(--fs-4xl);
 }
 
+/* ---- hero ---- */
+
 .hero {
   min-width: 0;
   padding: var(--space-3xl) 0 var(--space-main);
@@ -229,6 +258,8 @@ li {
   overflow-wrap: anywhere; /* 万一でも折り返す */
   word-break: normal;
 }
+
+/* ---- about ---- */
 
 .section-about {
   display: grid;
@@ -279,6 +310,8 @@ li {
   margin-top: var(--space-m);
 }
 
+/* ---- wish ---- */
+
 .section-wish {
   width: 100%;
   display: grid;
@@ -306,21 +339,21 @@ li {
   height: auto;
 }
 
-.section-wish--description-outer {
-  display: grid;
-  gap: var(--space-s);
-  height: 80%;
-}
+/* ---- accessibility ---- */
 
-.section-wish--description {
+.section-accessibility {
   display: grid;
-  gap: var(--space-s);
-  height: 20%;
+  gap: var(--space-m);
 }
 
 .section-accessibility ul li {
   list-style: square;
   list-style-position: inside;
+}
+
+.section-accessibility--inner {
+  display: grid;
+  gap: var(--space-m);
 }
 
 .section-accessibility__img {
@@ -337,6 +370,13 @@ li {
   display: grid;
   gap: var(--space-s);
 }
+
+.section-accessibility__omake--inner ul li {
+  list-style: square;
+  list-style-position: inside;
+}
+
+/* ---- works ---- */
 
 .section-works__list {
   width: 100%;
@@ -367,7 +407,8 @@ li {
   line-height: var(--lh);
 }
 
-/* できることセクション↓↓ */
+/* ---- skills ---- */
+
 .section-skills__list {
   width: 100%;
   margin: 0;
@@ -382,7 +423,8 @@ li {
   gap: var(--space-xs);
 }
 
-/* 思考セクション↓↓ */
+/* ---- thinking ---- */
+
 .section-thinking__content {
   width: 100%;
   display: grid;
@@ -399,26 +441,16 @@ li {
   gap: var(--space-xl);
 }
 
-/* (任意) 画像とテキストの間の余白を安定させる */
 .section-thinking__card {
   display: grid;
   gap: var(--space-xs);
 }
 
-/* 3) 画像をカード幅にフィットさせる */
 .section-thinking__thumb {
   display: block;
   width: 100%;
   height: auto;
   max-width: 100%;
-}
-
-.layout-section__title {
-  padding: 0.25em 0.5em;
-  background: transparent;
-  border-left: solid 5px var(--main-color);
-  display: grid;
-  gap: var(--space-m);
 }
 
 .section-thinking__card {
@@ -469,16 +501,28 @@ li {
   font-size: var(--fs-sm);
 }
 
+/* ---- codepen対応 ---- */
 
+.codepen {
+  height: 300px; /* data-height と同じ値 */
+  box-sizing: border-box;
+  margin: 1em 0;
+  padding: 1em;
+  border: 2px solid;
 
-@media (max-width: 767px) {
-  .section-works__list {
-    grid-template-columns: 1fr;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 100%;
+  overflow: hidden;
 }
 
-@media (max-width: 480px) {
-  .hero-copy__letter {
-    font-size: clamp(var(--fs-2xl), 7vw, var(--fs-4xl));
-  }
+/* CodePenが生成するラッパー/iframeを横に出さない対策 */
+.cp_embed_wrapper,
+.codepen iframe,
+.cp_embed_iframe {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: block;
 }

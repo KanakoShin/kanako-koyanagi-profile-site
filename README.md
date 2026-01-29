@@ -29,6 +29,7 @@ gridスタイルなどの活用で、最低限対応しています。
 
 ## アクセシビリティ対応について
 
+- [Accessibility Visualizer](https://chromewebstore.google.com/detail/accessibility-visualizer/idcacekakoknnpbfjcdhnkffgfbddnhk)を使用してのチェック※スクリーンリーダーまではテストできていません
 - 文字と背景色の充分なコントラスト比
 - 適切なhtmlマークアップを目指す
 - スキップリンクの配置
@@ -39,5 +40,5 @@ gridスタイルなどの活用で、最低限対応しています。
 
 ## codepenについて
 
-codepenではコードが読みにくい場合や、表示されない場合は[こちら（githubリポジトリ）](https://github.com/KanakoShin/kanako-koyanagi-profile-site/tree/main/examples)を参照してください。
+codepenではコードが読みにくい場合や、表示されない場合は[こちら（Githubリポジトリ）](https://github.com/KanakoShin/kanako-koyanagi-profile-site/tree/main/examples)を参照してください。
 ※作成したデモは、React、JavaScript周りについてはAIで生成したコードを元に作成しています。
